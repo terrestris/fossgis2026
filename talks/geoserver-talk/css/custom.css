@@ -53,6 +53,7 @@
 /* General table styling */
 .reveal table {
   margin: 0 auto;
+  font-size: 0.7em;
 }
 
 .reveal table th {

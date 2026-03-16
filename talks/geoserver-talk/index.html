@@ -105,44 +105,93 @@
         <!-- WARUM VERSION 3? -->
         <!-- ============================================ -->
         <section>
-          <section>
-            <h2>Warum GeoServer 3?</h2>
-            <ul>
-              <li class="fragment">Spring 5 – End of Support seit Januar 2025</li>
-              <li class="fragment">CISA-Pflicht: keine bekannten Schwachstellen</li>
-              <li class="fragment">Java EE → Jakarta EE Namespace-Wechsel</li>
-              <li class="fragment">JAI 1.1.3 – seit >15 Jahren ohne Updates</li>
-              <li class="fragment">→ Technische Schulden abbauen, Zukunftsfähigkeit sichern</li>
-            </ul>
-          </section>
+          <h2>Warum GeoServer 3?</h2>
+          <ul>
+            <li>Spring 5 – End of Support seit Januar 2025</li>
+            <li>CISA-Pflicht: keine bekannten Schwachstellen</li>
+            <li>Java EE → Jakarta EE Namespace-Wechsel</li>
+            <li>JAI 1.1.3 – seit >15 Jahren ohne Updates</li>
+            <li">→ Technische Schulden abbauen, Zukunftsfähigkeit sichern</li>
+          </ul>
+        </section>
 
-          <section>
-            <h2>Finanzierung</h2>
-            <ul>
-              <li>Crowdfunding-Kampagne (Ziel: 550.000 €)</li>
-              <li>Konsortium: Camptocamp, GeoSolutions, GeoCat</li>
-              <li>30+ Sponsoren weltweit</li>
-              <li>Community-Sprint im Oktober 2025</li>
-            </ul>
-          </section>
+        <!-- ============================================ -->
+        <!-- DER WEG ZU GEOSERVER 3 -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Der Weg zu GeoServer 3</h2>
+          <ul>
+            <li><a href="https://geoserver.org/behind%20the%20scenes/2024/09/10/gs3" target="_blank">Sep 2024: Call for Crowdfunding</a></li>
+          <p>
+            <img src="./img/gs_call_for_crowdfunding.png" alt="Crowdfunding Fortschritt" />
+          </p>
+        </section>
+
+        <section>
+          <h2>Der Weg zu GeoServer 3</h2>
+          <ul>
+            <li><a href="https://geoserver.org/behind%20the%20scenes/2025/01/21/gs3-80-percent-milestone.html" target="_blank">Jan 2025: Finanzierungsziel nach 100.000 € Spende bei 80%</a></li>
+          <p>
+            <img src="./img/gs_80_crowdfunding.png" alt="Crowdfunding Fortschritt" />
+          </p>
+        </section>
+
+        <section>
+          <h2>Der Weg zu GeoServer 3</h2>
+          <ul>
+            <li><a href="https://geoserver.org/behind%20the%20scenes/2025/05/13/gs3-crowdfunding-surpassed.html" target="_blank">Mai 2025: Finanzierungsziel übertroffen!</a></li>
+          <p>
+            <img src="./img/gs_crowdfunding_surpassed.png" alt="Crowdfunding Fortschritt" />
+          </p>
+        </section>
+
+        <section>
+            <h2>Crowdfunding</h2>
+            <div class="two-columns">
+              <div>
+                <ul>
+                  <li>Ziel: 550.000 €</li>
+                  <li>Start mit je 50.000 € aus 3er-Konsortium:
+                    <ul>
+                      <li>Camptocamp</li>
+                      <li>GeoSolutions</li>
+                      <li>GeoCat</li>
+                    </ul>
+                  </li>
+                  <li>30+ Sponsoren weltweit</li>
+                  <li>Ziel übertroffen</li>
+                  <!-- <li>Community-Sprint im Oktober 2025</li> -->
+                </ul>
+              </div>
+              <div>
+                <img src="https://geoserver.org/img/posts/2.26/gs3-amount.png" alt="Crowdfunding Betrag" style="height: 28%; margin-bottom: 0.5em;" />
+                <img src="https://geoserver.org/img/posts/2.26/gs3-percent.png" alt="Crowdfunding Prozent" style="height: 28%;" />
+              </div>
+            </div>
+        </section>
+
+        <section>
+          <h2>Sponsoren</h2>
+          <img src="./img/gs3_sponsors.png" alt="GeoServer 3 Sponsoren" />
         </section>
 
         <!-- ============================================ -->
         <!-- TIMELINE -->
         <!-- ============================================ -->
         <section>
-          <h2>Zeitplan</h2>
+          <h2>Timeline</h2>
           <table>
             <thead>
               <tr><th>Wann</th><th>Was</th></tr>
             </thead>
             <tbody>
-              <tr><td>Sep 2024</td><td>Crowdfunding-Start</td></tr>
-              <tr><td>Mai 2025</td><td>Finanzierungsziel erreicht</td></tr>
-              <tr><td>Okt 2025</td><td>Milestone 1 – ImageN, Java 17, OAuth2 OIDC</td></tr>
-              <tr><td>Okt 2025</td><td>Milestone 2 – Spring 6, Jakarta EE, Wicket 10</td></tr>
-              <tr><td>Feb 2026</td><td>Erster öffentlicher Release</td></tr>
-              <tr class="highlight-row"><td>Apr 2026</td><td><strong>General Availability (Ziel)</strong></td></tr>
+              <tr><td>Jan 2024</td><td>Roadmap 2024</td></tr>
+              <tr class="highlight-row"><td>Sep 2024</td><td>Crowdfunding-Start</td></tr>
+              <tr><td>Jan 2025</td><td>Finanzierungsziel bei 80%</td></tr>
+              <tr><td>Apr 2025</td><td>Final Call (~90%)</td></tr>
+              <tr class="highlight-row"><td>Mai 2025</td><td>Finanzierungsziel bei 100%</td></tr>
+              <tr><td>Okt 2025</td><td>Community Codesprint</tr>
+              <tr class="highlight-row"><td>Apr 2026</td><td><strong>Offizielles Release</strong></td></tr>
             </tbody>
           </table>
         </section>
@@ -165,6 +214,13 @@
               <tr><td>Web-UI</td><td>Wicket 9</td><td><strong>Wicket 10</strong></td></tr>
             </tbody>
           </table>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- WAS IST (WIRKLICH) NEU? -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Was ist (wirklich) neu?</h2>
         </section>
 
         <!-- ============================================ -->
