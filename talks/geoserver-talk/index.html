@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>GeoServer 3 – Was ist neu?</title>
+    <meta name="description" content="GeoServer 3 – Neuerungen, technische Änderungen und Migrationstipps" />
+    <meta name="author" content="" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- ============================================ -->
+        <!-- TITLE -->
+        <!-- ============================================ -->
+        <section>
+          <h1>GeoServer 3</h1>
+          <h3>Der große technische Umbau</h3>
+          <p class="subtitle">FOSSGIS 2026</p>
+          <p class="author">
+            Nils Bühner & Daniel Koch
+          </p>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- AGENDA -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Agenda</h2>
+          <ol>
+            <li>GeoServer im Überblick</li>
+            <li>Warum Version 3?</li>
+            <li>Technische Neuerungen</li>
+            <li>Neue Formate &amp; Protokolle</li>
+            <li>Migration von 2.x → 3.x</li>
+            <li>Was ist sonst noch neu?</li>
+            <!--
+            - CITE-Zertigizierung
+            - DOku in Markdown
+            - GeoParquet (Community)
+            - PMTiles
+            -->
+            <li>Fazit &amp; Ausblick</li>
+          </ol>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- WAS IST GEOSERVER? -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Was ist GeoServer?</h2>
+          <ul>
+            <li>Open-Source-Server für Geodaten (Java)</li>
+            <li>Referenzimplementierung für OGC-Standards</li>
+            <li>WMS, WFS, WCS, WMTS, WPS, OGC-API</li>
+            <li>Web-Admin-Oberfläche, REST-API</li>
+            <li>Plugin-Architektur, große Community</li>
+          </ul>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- KERNFUNKTIONEN -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Kernfunktionen (Recap)</h2>
+          <div class="two-columns">
+            <div>
+              <h4>Datenquellen</h4>
+              <ul>
+                <li>PostGIS, Oracle, SQL Server</li>
+                <li>GeoTIFF, GeoPackage, Shapefile</li>
+                <li>Cloud Optimized GeoTIFF</li>
+                <li>WMS/WFS Cascading</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Ausgabe</h4>
+              <ul>
+                <li>OGC-Dienste (WMS, WFS, …)</li>
+                <li>GeoWebCache / Tile-Caching</li>
+                <li>SLD / CSS Styling</li>
+                <li>REST-API für Automatisierung</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- WARUM VERSION 3? -->
+        <!-- ============================================ -->
+        <section>
+          <section>
+            <h2>Warum GeoServer 3?</h2>
+            <ul>
+              <li class="fragment">Spring 5 – End of Support seit Januar 2025</li>
+              <li class="fragment">CISA-Pflicht: keine bekannten Schwachstellen</li>
+              <li class="fragment">Java EE → Jakarta EE Namespace-Wechsel</li>
+              <li class="fragment">JAI 1.1.3 – seit >15 Jahren ohne Updates</li>
+              <li class="fragment">→ Technische Schulden abbauen, Zukunftsfähigkeit sichern</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Finanzierung</h2>
+            <ul>
+              <li>Crowdfunding-Kampagne (Ziel: 550.000 €)</li>
+              <li>Konsortium: Camptocamp, GeoSolutions, GeoCat</li>
+              <li>30+ Sponsoren weltweit</li>
+              <li>Community-Sprint im Oktober 2025</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- TIMELINE -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Zeitplan</h2>
+          <table>
+            <thead>
+              <tr><th>Wann</th><th>Was</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sep 2024</td><td>Crowdfunding-Start</td></tr>
+              <tr><td>Mai 2025</td><td>Finanzierungsziel erreicht</td></tr>
+              <tr><td>Okt 2025</td><td>Milestone 1 – ImageN, Java 17, OAuth2 OIDC</td></tr>
+              <tr><td>Okt 2025</td><td>Milestone 2 – Spring 6, Jakarta EE, Wicket 10</td></tr>
+              <tr><td>Feb 2026</td><td>Erster öffentlicher Release</td></tr>
+              <tr class="highlight-row"><td>Apr 2026</td><td><strong>General Availability (Ziel)</strong></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- TECHNOLOGIE-STACK -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Technologie-Stack: Alt vs. Neu</h2>
+          <table class="comparison-table">
+            <thead>
+              <tr><th>Komponente</th><th>GeoServer 2.x</th><th>GeoServer 3</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Java</td><td>8 / 11 / 17</td><td><strong>17+ (min.)</strong></td></tr>
+              <tr><td>Spring</td><td>5.x</td><td><strong>6.2+</strong></td></tr>
+              <tr><td>Spring Security</td><td>5.x</td><td><strong>6.5+</strong></td></tr>
+              <tr><td>Namespace</td><td>javax.*</td><td><strong>jakarta.*</strong></td></tr>
+              <tr><td>Bildverarbeitung</td><td>JAI / JAI-Ext</td><td><strong>Eclipse ImageN</strong></td></tr>
+              <tr><td>Web-UI</td><td>Wicket 9</td><td><strong>Wicket 10</strong></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SPRING 6 & JAKARTA EE -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Spring 6 &amp; Jakarta EE</h2>
+          <ul>
+            <li>Namespace-Wechsel: <code>javax.*</code> → <code>jakarta.*</code></li>
+            <li>Spring Security 6.5 – strengere Validierung</li>
+            <li>URL-Dispatcher-Änderungen → betrifft GeoWebCache</li>
+            <li>Apache Commons FileUpload: neue Dependencies</li>
+          </ul>
+          <pre><code class="language-java">// GeoServer 2.x
+import javax.servlet.http.HttpServletRequest;
+
+// GeoServer 3
+import jakarta.servlet.http.HttpServletRequest;</code></pre>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- ECLIPSE IMAGEN -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Eclipse ImageN</h2>
+          <ul>
+            <li>Ersetzt JAI 1.1.3 (letzte Aktualisierung ~2006)</li>
+            <li>Moderne Bildverarbeitungs-Library</li>
+            <li>Bessere Performance bei Raster-Daten</li>
+            <li>Aktiv gepflegt, kompatibel mit aktuellen JVMs</li>
+            <li>JAI-Ext wird perspektivisch abgelöst</li>
+          </ul>
+          <aside class="notes">
+            Besonders relevant für Raster-lastigen Einsatz.
+            Performance-Verbesserungen bei großen Mosaik-Layern.
+          </aside>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- OGC API -->
+        <!-- ============================================ -->
+        <section>
+          <h2>OGC API Support</h2>
+          <ul>
+            <li>OGC API – Features (Kern)</li>
+            <li>OGC API – Tiles (CITE-getestet)</li>
+            <li>OGC API – Maps</li>
+            <li>OGC API – Processes (Basis)</li>
+          </ul>
+          <p class="fragment highlight-green">
+            ✓ CITE-Zertifizierung wiederhergestellt<br>
+            <small>(erstmals seit ~10 Jahren)</small>
+          </p>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- NEUE FORMATE -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Neue Formate &amp; Protokolle</h2>
+          <div class="two-columns">
+            <div>
+              <h4>Datenquellen</h4>
+              <ul>
+                <li><strong>GeoParquet</strong> (Community)</li>
+                <li><strong>PMTiles</strong> (Community)</li>
+                <li>COG-Verbesserungen</li>
+                <li>MBTiles-Updates</li> <!-- Rausnehmen ?! -->
+                <li>Vector Mosaic Datastore</li> <!-- Rausnehmen ?! -->
+              </ul>
+            </div>
+            <div>
+              <h4>Ausgabe &amp; Verarbeitung</h4>
+              <ul>
+                <li>NetCDF-Output (WPS)</li>
+                <li>Excel-Output (WPS)</li>
+                <li>MapML für Layergruppen</li>
+                <li>Vector-Tile-Rendering ↑</li>
+                <li>WFS POST: 8KB-Limit behoben</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- WEB UI & SICHERHEIT -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Web-UI &amp; Sicherheit</h2>
+          <ul>
+            <li>Wicket 10 – modernere Oberfläche</li>
+            <li>Content-Security-Policy (CSP) Headers</li>
+            <li>HTML-Escaping bei GetFeatureInfo (Standard)</li>
+            <li>OAuth2 OIDC (Google, GitHub, Azure, Keycloak)</li>
+            <li>Master-Passwort-Verwaltung vereinfacht</li>
+            <li>Root-Login steuerbar per Application Properties</li>
+          </ul>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- DEPLOYMENT -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Deployment</h2>
+          <ul>
+            <li>Weiterhin: Binary, WAR, Windows-Installer</li>
+            <li><strong>Docker Multi-Arch</strong> (AMD64 + ARM64)</li>
+            <li>~40% bessere Preis-Performance auf ARM64 (Graviton)</li>
+            <li>Tomcat 10+ / Jetty 10.x+ erforderlich</li>
+            <li>docker.osgeo.org – offizielle Images</li>
+          </ul>
+          <pre><code class="language-bash">docker pull docker.osgeo.org/geoserver:3.0.0</code></pre>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- MIGRATION ÜBERBLICK -->
+        <!-- ============================================ -->
+        <section>
+          <section>
+            <h2>Migration 2.x → 3.x</h2>
+            <h3>Überblick der Breaking Changes</h3>
+            <table class="comparison-table small-table">
+              <thead>
+                <tr><th>Bereich</th><th>Auswirkung</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>javax → jakarta</td><td>Alle eigenen Extensions betroffen</td></tr>
+                <tr><td>Java 17+</td><td>Infrastruktur-Update nötig</td></tr>
+                <tr><td>Spring 6</td><td>Code-Refactoring bei Plugins</td></tr>
+                <tr><td>OAuth2 → OIDC</td><td>Auth-Provider aktualisieren</td></tr>
+                <tr><td>JAI → ImageN</td><td>Raster-Extensions anpassen</td></tr>
+                <tr><td>Servlet-Container</td><td>Tomcat 10+ / Jetty 10+</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- MIGRATION: CODE -->
+          <section>
+            <h2>Migration: Code &amp; Extensions</h2>
+            <ul>
+              <li>Alle eigenen Extensions müssen <strong>neu kompiliert</strong> werden</li>
+              <li>OpenRewrite für automatisierte Jakarta-Migration</li>
+              <li>Spring 6 API-Änderungen → manuelles Nacharbeiten</li>
+              <li>Community-Module: passende Source-Builds nötig</li>
+              <li>GeoFence-Migration noch in Arbeit (Milestone 3)</li>
+            </ul>
+            <pre><code class="language-xml">&lt;!-- pom.xml: OpenRewrite Jakarta Migration --&gt;
+&lt;plugin&gt;
+  &lt;groupId&gt;org.openrewrite.maven&lt;/groupId&gt;
+  &lt;artifactId&gt;rewrite-maven-plugin&lt;/artifactId&gt;
+  &lt;configuration&gt;
+    &lt;activeRecipes&gt;
+      &lt;recipe&gt;org.openrewrite.java.migrate.jakarta.JavaxMigrationToJakarta&lt;/recipe&gt;
+    &lt;/activeRecipes&gt;
+  &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+          </section>
+
+          <!-- MIGRATION: KONFIGURATION -->
+          <section>
+            <h2>Migration: Konfiguration</h2>
+            <ul>
+              <li class="fragment"><strong>Data Directory:</strong> Struktur bleibt kompatibel ✓</li>
+              <li class="fragment"><code>security/masterpw.info</code> wird nicht mehr generiert</li>
+              <li class="fragment">Umgebungsvariablen weiterhin unterstützt</li>
+              <li class="fragment">Neue Application Properties:
+                <ul>
+                  <li><code>ROOT_LOGIN_ENABLED</code></li>
+                  <li><code>GEOSERVER_NODE_OPTS</code> (Git Branch)</li>
+                </ul>
+              </li>
+              <li class="fragment">Data-Dir-Catalog-Loader → Core</li>
+            </ul>
+          </section>
+
+          <!-- MIGRATION: CHECKLISTE -->
+          <section>
+            <h2>Migrations-Checkliste</h2>
+            <ol>
+              <li>☐ Java 17+ installieren</li>
+              <li>☐ Servlet-Container aktualisieren (Tomcat 10+)</li>
+              <li>☐ Eigene Extensions auf jakarta.* portieren</li>
+              <li>☐ Spring 6 API-Kompatibilität prüfen</li>
+              <li>☐ OAuth2-Konfiguration auf OIDC umstellen</li>
+              <li>☐ Data Directory sichern &amp; testen</li>
+              <li>☐ Raster-Workflows mit ImageN validieren</li>
+              <li>☐ Tiling &amp; Caching-Szenarien testen</li>
+              <li>☐ High-Volume-Tests durchführen</li>
+            </ol>
+          </section>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- FAZIT -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Fazit</h2>
+          <ul>
+            <li>GeoServer 3 = notwendige Modernisierung</li>
+            <li>Solide technische Basis für die nächsten Jahre</li>
+            <li>Migration erfordert Planung, aber:</li>
+            <ul>
+              <li>Data Directory bleibt kompatibel</li>
+              <li>OpenRewrite automatisiert großen Teil</li>
+              <li>Community-Testing läuft auf Hochtouren</li>
+            </ul>
+            <li>GA geplant für April 2026</li>
+          </ul>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- LINKS & RESSOURCEN -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Links &amp; Ressourcen</h2>
+          <ul>
+            <li>🌐 <a href="https://geoserver.org">geoserver.org</a></li>
+            <li>📦 <a href="https://github.com/geoserver/geoserver">github.com/geoserver/geoserver</a></li>
+            <li>📖 <a href="https://docs.geoserver.org">docs.geoserver.org</a></li>
+            <li>🐳 <a href="https://docker.osgeo.org">docker.osgeo.org</a></li>
+          </ul>
+          <br>
+          <h3>Vielen Dank!</h3>
+          <p><em>Fragen?</em></p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        transition: 'slide',
+        plugins: [RevealNotes, RevealHighlight]
+      });
+    </script>
+  </body>
+</html>

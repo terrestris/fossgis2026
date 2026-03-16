@@ -1,0 +1,106 @@
+/* GeoServer 3 Talk — custom styles */
+
+.reveal .subtitle {
+  font-size: 1.2em;
+  color: #666;
+  margin-top: 0.5em;
+}
+
+.reveal .author {
+  font-size: 0.9em;
+  color: #888;
+  margin-top: 1em;
+}
+
+/* Two-column layout */
+.reveal .two-columns {
+  display: flex;
+  gap: 2em;
+  text-align: left;
+}
+
+.reveal .two-columns > div {
+  flex: 1;
+}
+
+/* Comparison table */
+.reveal .comparison-table {
+  font-size: 0.7em;
+  width: 100%;
+}
+
+.reveal .comparison-table th {
+  background: #2d6ca2;
+  color: white;
+  padding: 0.4em 0.6em;
+}
+
+.reveal .comparison-table td {
+  padding: 0.3em 0.6em;
+  border-bottom: 1px solid #ddd;
+}
+
+.reveal .small-table {
+  font-size: 0.65em;
+}
+
+/* Highlight row in tables */
+.reveal .highlight-row td {
+  background: #e8f5e9;
+  font-weight: bold;
+}
+
+/* General table styling */
+.reveal table {
+  margin: 0 auto;
+}
+
+.reveal table th {
+  background: #2d6ca2;
+  color: white;
+  padding: 0.4em 0.6em;
+}
+
+.reveal table td {
+  padding: 0.3em 0.6em;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Code blocks */
+.reveal pre {
+  font-size: 0.55em;
+  width: 100%;
+}
+
+.reveal pre code {
+  max-height: 450px;
+}
+
+/* Fragment highlight green */
+.reveal .fragment.highlight-green.visible {
+  color: #2e7d32;
+}
+
+/* Lists */
+.reveal ul,
+.reveal ol {
+  font-size: 0.85em;
+}
+
+.reveal ul ul {
+  font-size: 0.9em;
+}
+
+/* Section headings */
+.reveal h2 {
+  color: #2d6ca2;
+}
+
+.reveal h3 {
+  color: #3a8fd4;
+}
+
+.reveal h4 {
+  color: #555;
+  margin-bottom: 0.3em;
+}
