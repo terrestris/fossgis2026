@@ -105,3 +105,29 @@
   color: #555;
   margin-bottom: 0.3em;
 }
+
+.reveal section a.github,
+.reveal section a.url,
+.reveal section a.docker,
+.reveal section a.book {
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 1em 1em;
+  padding-left: 1.5em;
+}
+
+.reveal section a.github {
+  background-image: url("../img/github-logo.png");
+}
+
+.reveal section a.url {
+  background-image: url("../img/url-logo.png");
+}
+
+.reveal section a.docker {
+  background-image: url("../img/docker-logo.png");
+}
+
+.reveal section a.book {
+  background-image: url("../img/book-logo.png");
+}
