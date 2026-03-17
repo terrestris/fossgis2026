@@ -25,7 +25,7 @@
 
 /* Comparison table */
 .reveal .comparison-table {
-  font-size: 0.7em;
+  font-size: 0.6em;
   width: 100%;
 }
 
@@ -38,6 +38,10 @@
 .reveal .comparison-table td {
   padding: 0.3em 0.6em;
   border-bottom: 1px solid #ddd;
+}
+
+.reveal .comparison-table td strong {
+  color: #ec8106;
 }
 
 .reveal .small-table {

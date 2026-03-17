@@ -109,16 +109,16 @@
           <ul>
             <li>Technische Modernisierung der Plattform
               <ul>
-                <li>Java 17+ – Ende von Java 8/11 Support</li>
-                <li>Spring 6 – Support für Spring 5 bereits abgelaufen</li>
-                <li>Kompatibilität zu Tomcat 10/Jakarta EE</li>
+                <li>Java 17/21 – Ende des Java 8/11 Support</li>
+                <li>LTS-Support für Spring 5 in 2025 bereits abgelaufen<br>→ Migration zu Spring 6/7 dringend nötig</li>
+                <li>Kompatibilität zu Tomcat 11/Jetty 12/Jakarta EE schaffen</li>
                 <li>Unterstützung für moderne Security-Integrationen</li>
                 <li>Ersatz der veralteten Java Advanced Imaging (JAI) Bibliothek</li>
               </ul>
             </li>
-            <!-- <li>CISA-Pflicht: keine bekannten Schwachstellen</li> -->
-            <li">→ Technische Schulden abbauen, Zukunftsfähigkeit sichern</li>
-            <li">→ Kein klassisches Feature-Release, ein Platformupgrade</li>
+            <li>Technische Schulden abbauen
+            <li>Zukunftsfähigkeit sichern</li>
+            <li>Kein klassisches Feature-Release, sondern Plattformupgrade</li>
           </ul>
         </section>
 
@@ -217,12 +217,6 @@
         <!-- ============================================ -->
 
         <section>
-          <h2>Die Spring-Lawine</h2>
-          <img src="./img/gs3-updates.svg" />
-          <p>Quelle: <a href="https://geoserver.org/sponsor/gs3-crowdfunding" target="_blank">GeoServer 3 Crowdfunding</a></p>
-        </section>
-
-        <section>
           <h2>Viel Arbeit...</h2>
           <img src="./img/gs_upgrades.png" />
           <p>Quelle: <a href="https://talks.osgeo.org/media/foss4g-europe-2025/submissions/HF8U3F/resources/GeoServer_3_Status_Report_r7jgPIl.pdf" target="_blank">GeoServer 3 Status Report, FOSS4G-E 2025</a></p>
@@ -234,72 +228,118 @@
           <p>Quelle: <a href="https://geoserver.org/sponsor/gs3-crowdfunding" target="_blank">GeoServer 3 Crowdfunding</a></p>
         </section>
 
-        <section>
-          <h2>Technologie: Alt vs. Neu</h2>
-          <table class="comparison-table">
-            <thead>
-              <tr><th>Komponente</th><th>GeoServer 2.x</th><th>GeoServer 3</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Java</td><td>8 / 11 / 17</td><td><strong>17+ (min.)</strong></td></tr>
-              <tr><td>Spring</td><td>5.x</td><td><strong>6.2+</strong></td></tr>
-              <tr><td>Spring Security</td><td>5.x</td><td><strong>6.5+</strong></td></tr>
-              <tr><td>Namespace</td><td>javax.*</td><td><strong>jakarta.*</strong></td></tr>
-              <tr><td>Bildverarbeitung</td><td>JAI / JAI-Ext</td><td><strong>Eclipse ImageN</strong></td></tr>
-              <tr><td>Web-UI</td><td>Wicket 9</td><td><strong>Wicket 10</strong></td></tr>
-            </tbody>
-          </table>
-        </section>
-
         <!-- ============================================ -->
         <!-- SPRING 6 & JAKARTA EE -->
         <!-- ============================================ -->
         <section>
-          <h2>Spring 6 &amp; Jakarta EE</h2>
+          <h2>Spring &amp; Jakarta EE</h2>
           <ul>
+            <li>"Spring" ist vom GeoServer genutzte Kernbibliothek</li>
+            <li>Auslöser einer Lawine und Antreiber für GeoServer 3:
+              <ul>
+                <li>Kein LTS-Support mehr für Spring 5</li>
+                <li>Upgrade auf Spring 6 / 7 zwingend nötig!</li>
+              </ul>
+            </li>
+            <li>Infolgedessen neue Minimalanforderungen:
+              <ul>
+                <li>Java 17+</li>
+                <li>API Baseline: Tomcat 10+ / Jetty 11+</li>
+                <li>Spring Security 6 / 7</li>
+              </ul>
+            </li>
+            <li>Code-Refactoring, das auch bei eigenen Extensions nötig wäre</li>
             <li>Namespace-Wechsel: <code>javax.*</code> → <code>jakarta.*</code></li>
-            <li>Spring Security 6.5 – strengere Validierung</li>
-            <li>URL-Dispatcher-Änderungen → betrifft GeoWebCache</li>
-            <li>Apache Commons FileUpload: neue Dependencies</li>
           </ul>
-          <pre><code class="language-java">// GeoServer 2.x
+          <pre style="font-size: 0.4em;"><code class="language-java">// GeoServer 2.x
 import javax.servlet.http.HttpServletRequest;
 
 // GeoServer 3
 import jakarta.servlet.http.HttpServletRequest;</code></pre>
         </section>
 
-        <!-- ============================================ -->
-        <!-- ECLIPSE IMAGEN -->
-        <!-- ============================================ -->
         <section>
-          <h2>Eclipse ImageN</h2>
-          <ul>
-            <li>Ersetzt JAI 1.1.3 (letzte Aktualisierung ~2006)</li>
-            <li>Moderne Bildverarbeitungs-Library</li>
-            <li>Bessere Performance bei Raster-Daten</li>
-            <li>Aktiv gepflegt, kompatibel mit aktuellen JVMs</li>
-            <li>JAI-Ext wird perspektivisch abgelöst</li>
-          </ul>
-          <aside class="notes">
-            Besonders relevant für Raster-lastigen Einsatz.
-            Performance-Verbesserungen bei großen Mosaik-Layern.
-          </aside>
+          <h2>Die Spring-Lawine</h2>
+          <img src="./img/gs3-updates.svg" />
+          <p>Quelle: <a href="https://geoserver.org/sponsor/gs3-crowdfunding" target="_blank">GeoServer 3 Crowdfunding</a></p>
         </section>
 
-        <!-- ============================================ -->
-        <!-- WEB UI & SICHERHEIT -->
-        <!-- ============================================ -->
         <section>
-          <h2>Web-UI &amp; Sicherheit</h2>
-          <ul>
-            <li>Wicket 10 – modernere Oberfläche</li>
-            <li>Content-Security-Policy (CSP) Headers</li>
-            <li>HTML-Escaping bei GetFeatureInfo (Standard)</li>
-            <li>OAuth2 OIDC (Google, GitHub, Azure, Keycloak)</li>
-            <li>Master-Passwort-Verwaltung vereinfacht</li>
-            <li>Root-Login steuerbar per Application Properties</li>
-          </ul>
+          <h2>Java 17</h2>
+          <div class="two-columns">
+            <div style="flex: 3;">
+              <ul>
+                <li>Erfordert Umstieg auf Wicket 10 (Web-UI)</li>
+                <li>Führt zu Inkompatibilität mit Java Advanced Imaging (JAI)<br>→ Erfordert Umstieg auf ImageN</li>
+                <li>Kompatibilität zu anderen Abhängigkeiten muss sichergestellt werden (GeoTools, etc.)</li>
+                <li>Seit GeoServer 2.28.x ist Java 17 bereits zwingend gefordert!</li>
+              </ul>
+            </div>
+            <div style="flex: 1;">
+              <img src="https://blog.nashtechglobal.com/wp-content/uploads/2024/06/image-19.png" alt="Java 17" />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Von JAI zu ImageN</h2>
+          <div class="two-columns">
+            <div style="flex: 3;">
+              <ul>
+                <li>Java Advanced Imaging (JAI) 1.1.3 – letzte Aktualisierung ~2006</li>
+                <li>Inkompatibel mit Java 17+</li>
+                <li>Eclipse ImageN als moderner OpenSource-Nachfolger
+                  <ul>
+                    <li>Der alte JAI-Code wurde dafür von Oracle gespendet!</li>
+                    <li>Bessere Performance bei Raster-Daten</li>
+                    <li>Aktiv gepflegt, kompatibel mit aktuellen JVMs</li>
+                    <li>Bereits ab GeoServer 2.28.x im Einsatz</li>
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+            <div style="flex: 1;">
+              <img src="https://raw.githubusercontent.com/eclipse-imagen/imagen/refs/heads/main/logo/imagen-horizontal-logo-small.png" alt="Eclipse ImageN" />
+              <p><small style="font-size: 0.5em;">Schöne Geschichte:</small></p>
+              <img src="./img/jai2imagen.png" alt="From JAI to ImageN" />
+              <p><small style="font-size: 0.5em;">Quelle: <a href="https://talks.osgeo.org/media/foss4g-europe-2025/submissions/HF8U3F/resources/GeoServer_3_Status_Report_r7jgPIl.pdf" target="_blank">GeoServer 3 Status Report, FOSS4G-E 2025</a></small></p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Spring Security</h2>
+          <div class="two-columns">
+            <div style="flex: 3;">
+              <ul>
+                <li>Upgrade von Spring Security 5 auf 7</li>
+                <li>Strengere Validierung und neue Defaults</li>
+                <li>Führt zu Inkompatibilität der OAuth2 Security Extension des GeoServers</li>
+                <li>Erfordert komplette Überarbeitung der Erweiterung: OAuth2 → OIDC (OpenID Connect)
+              </ul>
+            </div>
+            <div style="flex: 1;">
+              <img src="https://www.openpolicyagent.org/assets/images/oidc-7d6327a2c14cc030e944f8e88c76f629.png" alt="OpenID Connect" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Logo_of_Keycloak.svg" alt="Keycloak" />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Technologien</h2>
+          <table class="comparison-table">
+            <thead>
+              <tr><th>Komponente</th><th>GS 2.26.x</th><th>GS 2.27.x</th><th>GS 2.28.x</th><th>GS 3.0.0</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Java</td><td>11 / 17</td><td>11 / 17</td><td><strong>17 / 21</strong></td><td>17 / 21</td></tr>
+              <tr><td>Bildverarbeitung</td><td>JAI / JAI-Ext</td><td>JAI / JAI-Ext</td><td><strong>Eclipse ImageN</strong></td><td>Eclipse ImageN</td></tr>
+              <tr><td>Spring</td><td>5.3</td><td>5.3</td><td>5.3</td><td><strong>7.0</strong></td></tr>
+              <tr><td>Spring Security</td><td>5.8</td><td>5.8</td><td>5.8</td><td><strong>7.0</strong></td></tr>
+              <tr><td>API-Baseline</td><td>javax.*<br>Tomcat 9<br>Jetty 9 / 10</td><td>javax.*<br>Tomcat 9<br>Jetty 9 / 10</td><td>javax.*<br>Tomcat 9<br>Jetty 9 / 10</td><td><strong>jakarta.*<br>Tomcat 10+<br>Jetty 11+</strong></td></tr>
+              <tr><td>Web-UI</td><td>Wicket 7</td><td><strong>Wicket 9</strong></td><td>Wicket 9</td><td><strong>Wicket 10</strong></td></tr>
+            </tbody>
+          </table>
         </section>
 
         <!-- ============================================ -->
@@ -313,7 +353,7 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
               <tr><th>Bereich</th><th>Auswirkung</th></tr>
             </thead>
             <tbody>
-              <tr><td>Servlet-Container</td><td>Infrastruktur-Update (Tomcat 10+ / Jetty 10+)</td></tr>
+              <tr><td>Servlet-Container</td><td>Infrastruktur-Update (Tomcat 10+ / Jetty 11+)</td></tr>
               <tr><td>Java 17+</td><td>Infrastruktur-Update</td></tr>
               <tr><td>OAuth2 → OIDC</td><td>Aktualisierung Auth-Provider</td></tr>
               <tr><td>Spring 7</td><td>Code-Refactoring bei Plugins</td></tr>
