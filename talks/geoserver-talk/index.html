@@ -244,7 +244,7 @@
             <li>Infolgedessen neue Minimalanforderungen:
               <ul>
                 <li>Java 17+</li>
-                <li>API Baseline: Tomcat 10+ / Jetty 11+</li>
+                <li>Servlet Container: Tomcat 10+ / Jetty 11+</li>
                 <li>Spring Security 6 / 7</li>
               </ul>
             </li>
@@ -336,7 +336,7 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
               <tr><td>Bildverarbeitung</td><td>JAI / JAI-Ext</td><td>JAI / JAI-Ext</td><td><strong>Eclipse ImageN</strong></td><td>Eclipse ImageN</td></tr>
               <tr><td>Spring</td><td>5.3</td><td>5.3</td><td>5.3</td><td><strong>7.0</strong></td></tr>
               <tr><td>Spring Security</td><td>5.8</td><td>5.8</td><td>5.8</td><td><strong>7.0</strong></td></tr>
-              <tr><td>API-Baseline</td><td>javax.*<br>Tomcat 9<br>Jetty 9 / 10</td><td>javax.*<br>Tomcat 9<br>Jetty 9 / 10</td><td>javax.*<br>Tomcat 9<br>Jetty 9 / 10</td><td><strong>jakarta.*<br>Tomcat 10+<br>Jetty 11+</strong></td></tr>
+              <tr><td>Servlet Container</td><td>javax.*<br>Tomcat 9<br>Jetty 9 / 10</td><td>javax.*<br>Tomcat 9<br>Jetty 9 / 10</td><td>javax.*<br>Tomcat 9<br>Jetty 9 / 10</td><td><strong>jakarta.*<br>Tomcat 10+<br>Jetty 11+</strong></td></tr>
               <tr><td>Web-UI</td><td>Wicket 7</td><td><strong>Wicket 9</strong></td><td>Wicket 9</td><td><strong>Wicket 10</strong></td></tr>
             </tbody>
           </table>
@@ -353,23 +353,24 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
               <tr><th>Bereich</th><th>Auswirkung</th></tr>
             </thead>
             <tbody>
-              <tr><td>Servlet-Container</td><td>Infrastruktur-Update (Tomcat 10+ / Jetty 11+)</td></tr>
-              <tr><td>Java 17+</td><td>Infrastruktur-Update</td></tr>
-              <tr><td>OAuth2 → OIDC</td><td>Aktualisierung Auth-Provider</td></tr>
-              <tr><td>Spring 7</td><td>Code-Refactoring bei Plugins</td></tr>
-              <tr><td>javax → jakarta</td><td>Code-Refactoring bei Plugins</td></tr>
-              <tr><td>JAI → ImageN</td><td>Code-Refactoring bei (Raster-)Extensions</td></tr>
+              <tr><td>Servlet-Container</td><td>- Infrastruktur-Update (Tomcat 10+ / Jetty 11+)<br>- Anpassungen in eigenem Plugin-Code (<code style="font-size: 0.8em;">javax -> jakarta)</code>)<br>- ggf. zu prüfen: sehr spezifische Server-Konfigurationen</td></tr>
+              <tr><td>Java 17+</td><td>- Infrastruktur-Update<br>- ggf. Anpassungen in eigenem Plugin-Code</td></tr>
+              <tr><td>OAuth2 → OIDC</td><td>- Aktualisierung/Umstieg auf GeoServer OIDC Extension</td></tr>
+              <tr><td>Spring 7</td><td>- Anpassungen nur bei eigenem Plugin-Code</td></tr>
+              <tr><td>javax → jakarta</td><td>- Anpassungen nur bei eigenem Plugin-Code</td></tr>
+              <tr><td>JAI → ImageN</td><td>- Anpassungen nur bei eigenem (Raster-)Plugin-Code</td></tr>
             </tbody>
           </table>
         </section>
 
         <!-- MIGRATION: CODE -->
         <section>
-          <h2>Migration: Code &amp; Extensions</h2>
+          <h2>Migration 2.x → 3.x</h2>
+          <h3>Code &amp; Extensions</h3>
           <ul>
             <li>Alle eigenen Extensions müssen <strong>neu kompiliert</strong> werden</li>
             <li><a href="https://github.com/openrewrite">OpenRewrite</a> für automatisierte Jakarta-Migration</li>
-            <li>Spring 7 API-Änderungen → manuelles Nacharbeiten</li>
+            <li>Java 17+ oder Spring 7 API-Änderungen<br>→ manuelles Nacharbeiten</li>
             <li>Community-Module: passende Source-Builds nötig</li>
             <li>GeoFence-Migration noch in Arbeit (Milestone 3)</li>
           </ul>
@@ -377,7 +378,8 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
 
         <!-- MIGRATION: KONFIGURATION -->
         <section>
-          <h2>Migration: Konfiguration</h2>
+          <h2>Migration 2.x → 3.x</h2>
+          <h3>Konfiguration</h3>
           <ul>
             <li><strong>Data Directory:</strong> Struktur bleibt kompatibel</li>
             <li><code>security/masterpw.info</code> wird nicht mehr generiert</li>
@@ -393,19 +395,26 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
         </section>
 
         <!-- MIGRATION: CHECKLISTE -->
-        <section>
+        <section style="font-size: 0.8em;">
           <h2>Migrations-Checkliste</h2>
-          <ol>
+          <ul style="list-style: none;">
             <li>☐ Java 17+ installieren</li>
             <li>☐ Servlet-Container aktualisieren (Tomcat 10+)</li>
-            <li>☐ Eigene Extensions auf <code>jakarta.*</code> portieren</li>
-            <li>☐ Spring 7 API-Kompatibilität prüfen</li>
-            <li>☐ OAuth2-Konfiguration auf OIDC umstellen</li>
             <li>☐ Data Directory sichern &amp; testen</li>
-            <li>☐ Raster-Workflows mit ImageN validieren</li>
             <li>☐ Tiling &amp; Caching-Szenarien testen</li>
             <li>☐ High-Volume-Tests durchführen</li>
-          </ol>
+            <li><br>Falls genutzt:
+              <ul style="list-style: none;">
+                <li>☐ Raster-Workflows auf Basis von ImageN validieren</li>
+                <li>☐ OAuth2-Konfiguration auf OIDC umstellen</li>
+              </ul>
+            <li><br>In Code eigener Extensions:
+              <ul style="list-style: none;">
+                <li>☐ OpenRewrite für <code>javax.*</code> → <code>jakarta.*</code></li>
+                <li>☐ Spring 7 API-Änderungen ggf. manuell nacharbeiten</li>
+              </ul>
+            </li>
+          </ul>
         </section>
 
         <!-- ============================================ -->
@@ -421,12 +430,15 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
                   <li>WFS 2.0, WMS 1.3, WCS 2.0, WMTS 1.0, OGC API Features/Tiles</li>
                 </ul>
               </li>
-              <li><strong>Dokumentation auf Markdown</strong> migriert
-                <ul><li>PDF-Generierung entfernt, modernerer Workflow</li></ul>
+              <li><strong>Dokumentation wird auf Markdown</strong> migriert
+                <ul>
+                  <li>PDF-Generierung entfernt, modernerer Workflow</li>
+                  <li>Vorschau: <a href="https://geoserver.org/geoserver" target="_blank">https://geoserver.org/geoserver</a></li>
+                </ul>
               </li>
               <li><strong>CORS-Support</strong> nativ konfigurierbar</li>
-              <li><strong>Docker Multi-Arch</strong> (AMD64 + ARM64)</li>
               <li><strong>Security-Härtung:</strong> CSP-Headers, HTML-Escaping (GetFeatureInfo), XXE-Schutz</li>
+              <li><strong>Docker Multi-Arch</strong> Support (AMD64 + ARM64) in Planung</li>
             </ul>
           </section>
 
@@ -470,13 +482,13 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
           <ul>
             <li>GeoServer 3 = notwendige Modernisierung</li>
             <li>Solide technische Basis für die nächsten Jahre</li>
-            <li>Migration erfordert Planung, aber:</li>
+            <li>Migration erfordert Vorsicht, aber:</li>
             <ul>
               <li>Data Directory bleibt kompatibel</li>
-              <li>OpenRewrite automatisiert großen Teil</li>
+              <li>OpenRewrite automatisiert bei eigenem Code großen Teil</li>
               <li>Community-Testing läuft auf Hochtouren</li>
             </ul>
-            <li>GA geplant für April 2026</li>
+            <li>GeoServer 3 Release ist für den 15. April 2026 angekündigt</li>
           </ul>
         </section>
 
