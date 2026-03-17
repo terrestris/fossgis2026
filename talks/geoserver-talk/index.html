@@ -420,58 +420,101 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
         <!-- ============================================ -->
         <!-- SONSTIGES NEU -->
         <!-- ============================================ -->
+
+        <!-- https://geoserver.org/announcements/2025/07/16/cite-certification.html -->
+        <!-- https://talks.osgeo.org/media/foss4g-europe-2025/submissions/YFFDVB/resources/Certified_GeoServer__status_of_OGC_servi_eM8OJlj.pdf -->
         <section>
-          <section>
-            <h2>Nennenswerte Neuerungen</h2>
-            <ul>
-              <li><strong>CITE-Zertifizierung wiederhergestellt</strong>
-                <ul>
-                  <li>Erstmals seit ~10 Jahren wieder zertifiziert</li>
-                  <li>WFS 2.0, WMS 1.3, WCS 2.0, WMTS 1.0, OGC API Features/Tiles</li>
-                </ul>
-              </li>
-              <li><strong>Dokumentation wird auf Markdown</strong> migriert
-                <ul>
-                  <li>PDF-Generierung entfernt, modernerer Workflow</li>
-                  <li>Vorschau: <a href="https://geoserver.org/geoserver" target="_blank">https://geoserver.org/geoserver</a></li>
-                </ul>
-              </li>
-              <li><strong>CORS-Support</strong> nativ konfigurierbar</li>
-              <li><strong>Security-Härtung:</strong> CSP-Headers, HTML-Escaping (GetFeatureInfo), XXE-Schutz</li>
-              <li><strong>Docker Multi-Arch</strong> Support (AMD64 + ARM64) in Planung</li>
-            </ul>
-          </section>
+          <h2>CITE-Zertifizierung wiederhergestellt</h2>
+          <div class="two-columns">
+            <div style="flex: 2;">
+              <ul>
+                <li>Erstmals seit ~10 Jahren wieder zertifiziert</li>
+                <li>WFS 2.0, WMS 1.3, WCS 2.0, WMTS 1.0, OGC API Features/Tiles</li>
+              </ul>
+            </div>
+            <div style="flex: 1;">
+              <img src="./img/gs_cite.png" alt="GeoServer CITE-Zertifizierung" />
+            </div>
+          </div>
+        </section>
 
-          <section>
-            <h2>Funktionale Änderungen (1/2)</h2>
-            <ul>
-              <li><strong>OGC API</strong> – Maps, Tiles (CITE), Processes, 3D GeoVolumes (Comm.)</li>
-              <li><strong>WFS:</strong> 8KB POST-Limit behoben, Features Templating Schema Override</li>
-              <li><strong>WMS:</strong> GetLegendGraphic mit Transformations-Funktionen</li>
-              <li><strong>WPS:</strong> SpatioTemporalZonalStatistics, Jiffle Expressions, NetCDF-Output</li>
-              <li><strong>Vector Tiles:</strong> Metatiling-Support, verbessertes Clipping &amp; Rendering</li>
-              https://github.com/geoserver/geoserver/pull/9052
+        <!-- https://github.com/geoserver/docker/pull/263 -->
+        <section>
+          <h2>Multi-Architecture Docker Images</h2>
+          <div class="two-columns">
+            <div style="flex: 1;">
+              <ul>
+                <li>Support für AMD64 & ARM64 Umgebungen</li>
+                <li>Noch in der Umsetzung</li>
+              </ul>
+            </div>
+            <div style="flex: 2;">
+              <img src="./img/gs_multi_arch.png" alt="GeoServer Multi-Arch Support" />
+            </div>
+          </div>
+        </section>
 
-              <li><strong>REST API:</strong> Security-Provider, Filter-Chains &amp; Auth-Filter CRUD</li>
-            </ul>
-          </section>
+        <!-- https://github.com/geoserver/geoserver/pull/9046 -> neu in gs 3, kein backport bisher -->
+        <section>
+          <h2>CORS-Settings in Admin-UI</h2>
+          <div class="two-columns">
+            <div style="flex: 2;">
+              <ul>
+                <li><strong>CORS-Support</strong> nativ konfigurierbar über Admin-UI</li>
+                <li>Ersetzt bisherige manuelle Filter-Konfiguration in der <code>web.xml</code></li>
+                <li>Security → CORS</li>
+              </ul>
+            </div>
+            <div style="flex: 1;">
+              <img src="./img/gs_cors.png" alt="GeoServer Markdown Dokumentation" />
+            </div>
+        </section>
 
-          <section>
-            <h2>Funktionale Änderungen (2/2)</h2>
-            <ul>
-              <li><strong>Neue Datenquellen:</strong>
-                <ul>
-                  <li>GeoParquet, PMTiles, SingleStore/MemSQL (Community)</li>
-                  <li>COG-Verbesserungen, Vector Mosaic Datastore</li>
-                </ul>
-              </li>
-              <li><strong>Neue Ausgabeformate:</strong> Excel (WPS), NetCDF (WPS)</li>
-              <li><strong>Admin-UI:</strong> Audit-Trail (letzte Änderung + User), kompaktere Conformance-UI</li>
-              <li><strong>GeoWebCache:</strong> Google Cloud Storage Backend (Comm.), Tile-Matrix-Set-Links</li>
-              <li><strong>Konfiguration:</strong> CRS-Autoritäten, erweiterte Application Properties</li>
-              <li><strong>Sonstiges:</strong> KMZ mit eingebetteten Icons, CoverageView NoData-Fill, STAC/OpenSearch-Verbesserungen</li>
-            </ul>
-          </section>
+        <!-- https://github.com/geoserver/geoserver/wiki/GSIP-221 -->
+        <section>
+          <h2>Dokumentation mit MkDocs</h2>
+          <div class="two-columns">
+            <div style="flex: 2;">
+              <ul>
+                <li>Migration der Dokumentation zu Markdown</li>
+                <li>Verbesserte Lesbarkeit, einfachere Wartung</li>
+                <li><strong>Vorschau:</strong> <a href="https://docs-test.geoserver.org/3.0.x/">https://docs-test.geoserver.org/3.0.x/</a></li>
+              </ul>
+            </div>
+            <div style="flex: 3;">
+              <img src="./img/gs_documentation.png" alt="GeoServer Markdown Dokumentation" />
+            </div>
+        </section>
+
+        <section>
+          <h2>Funktionale Änderungen (1/2)</h2>
+          <ul>
+            <li><strong>OGC API</strong> – Maps, Tiles (CITE), Processes, 3D GeoVolumes (Comm.)</li>
+            <li><strong>WFS:</strong> 8KB POST-Limit behoben, Features Templating Schema Override</li>
+            <li><strong>WMS:</strong> GetLegendGraphic mit Transformations-Funktionen</li>
+            <li><strong>WPS:</strong> SpatioTemporalZonalStatistics, Jiffle Expressions, NetCDF-Output</li>
+            <li><strong>Vector Tiles:</strong> Metatiling-Support, verbessertes Clipping &amp; Rendering</li>
+            https://github.com/geoserver/geoserver/pull/9052
+
+            <li><strong>REST API:</strong> Security-Provider, Filter-Chains &amp; Auth-Filter CRUD</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Funktionale Änderungen (2/2)</h2>
+          <ul>
+            <li><strong>Neue Datenquellen:</strong>
+              <ul>
+                <li>GeoParquet, PMTiles, SingleStore/MemSQL (Community)</li>
+                <li>COG-Verbesserungen, Vector Mosaic Datastore</li>
+              </ul>
+            </li>
+            <li><strong>Neue Ausgabeformate:</strong> Excel (WPS), NetCDF (WPS)</li>
+            <li><strong>Admin-UI:</strong> Audit-Trail (letzte Änderung + User), kompaktere Conformance-UI</li>
+            <li><strong>GeoWebCache:</strong> Google Cloud Storage Backend (Comm.), Tile-Matrix-Set-Links</li>
+            <li><strong>Konfiguration:</strong> CRS-Autoritäten, erweiterte Application Properties</li>
+            <li><strong>Sonstiges:</strong> KMZ mit eingebetteten Icons, CoverageView NoData-Fill, STAC/OpenSearch-Verbesserungen</li>
+          </ul>
         </section>
 
         <!-- ============================================ -->
