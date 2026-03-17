@@ -306,77 +306,119 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
         <!-- MIGRATION ÜBERBLICK -->
         <!-- ============================================ -->
         <section>
-          <section>
-            <h2>Migration 2.x → 3.x</h2>
-            <h3>Überblick der Breaking Changes</h3>
-            <table class="comparison-table small-table">
-              <thead>
-                <tr><th>Bereich</th><th>Auswirkung</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>javax → jakarta</td><td>Alle eigenen Extensions betroffen</td></tr>
-                <tr><td>Java 17+</td><td>Infrastruktur-Update nötig</td></tr>
-                <tr><td>Spring 6</td><td>Code-Refactoring bei Plugins</td></tr>
-                <tr><td>OAuth2 → OIDC</td><td>Auth-Provider aktualisieren</td></tr>
-                <tr><td>JAI → ImageN</td><td>Raster-Extensions anpassen</td></tr>
-                <tr><td>Servlet-Container</td><td>Tomcat 10+ / Jetty 10+</td></tr>
-              </tbody>
-            </table>
-          </section>
+          <h2>Migration 2.x → 3.x</h2>
+          <h3>Überblick der Breaking Changes</h3>
+          <table class="comparison-table small-table">
+            <thead>
+              <tr><th>Bereich</th><th>Auswirkung</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Servlet-Container</td><td>Infrastruktur-Update (Tomcat 10+ / Jetty 10+)</td></tr>
+              <tr><td>Java 17+</td><td>Infrastruktur-Update</td></tr>
+              <tr><td>OAuth2 → OIDC</td><td>Aktualisierung Auth-Provider</td></tr>
+              <tr><td>Spring 7</td><td>Code-Refactoring bei Plugins</td></tr>
+              <tr><td>javax → jakarta</td><td>Code-Refactoring bei Plugins</td></tr>
+              <tr><td>JAI → ImageN</td><td>Code-Refactoring bei (Raster-)Extensions</td></tr>
+            </tbody>
+          </table>
+        </section>
 
-          <!-- MIGRATION: CODE -->
-          <section>
-            <h2>Migration: Code &amp; Extensions</h2>
-            <ul>
-              <li>Alle eigenen Extensions müssen <strong>neu kompiliert</strong> werden</li>
-              <li>OpenRewrite für automatisierte Jakarta-Migration</li>
-              <li>Spring 6 API-Änderungen → manuelles Nacharbeiten</li>
-              <li>Community-Module: passende Source-Builds nötig</li>
-              <li>GeoFence-Migration noch in Arbeit (Milestone 3)</li>
-            </ul>
-            <pre><code class="language-xml">&lt;!-- pom.xml: OpenRewrite Jakarta Migration --&gt;
-&lt;plugin&gt;
-  &lt;groupId&gt;org.openrewrite.maven&lt;/groupId&gt;
-  &lt;artifactId&gt;rewrite-maven-plugin&lt;/artifactId&gt;
-  &lt;configuration&gt;
-    &lt;activeRecipes&gt;
-      &lt;recipe&gt;org.openrewrite.java.migrate.jakarta.JavaxMigrationToJakarta&lt;/recipe&gt;
-    &lt;/activeRecipes&gt;
-  &lt;/configuration&gt;
-&lt;/plugin&gt;</code></pre>
-          </section>
+        <!-- MIGRATION: CODE -->
+        <section>
+          <h2>Migration: Code &amp; Extensions</h2>
+          <ul>
+            <li>Alle eigenen Extensions müssen <strong>neu kompiliert</strong> werden</li>
+            <li><a href="https://github.com/openrewrite">OpenRewrite</a> für automatisierte Jakarta-Migration</li>
+            <li>Spring 7 API-Änderungen → manuelles Nacharbeiten</li>
+            <li>Community-Module: passende Source-Builds nötig</li>
+            <li>GeoFence-Migration noch in Arbeit (Milestone 3)</li>
+          </ul>
+        </section>
 
-          <!-- MIGRATION: KONFIGURATION -->
+        <!-- MIGRATION: KONFIGURATION -->
+        <section>
+          <h2>Migration: Konfiguration</h2>
+          <ul>
+            <li><strong>Data Directory:</strong> Struktur bleibt kompatibel</li>
+            <li><code>security/masterpw.info</code> wird nicht mehr generiert</li>
+            <li>Umgebungsvariablen weiterhin unterstützt</li>
+            <li>Neue Application Properties:
+              <ul>
+                <li><code>ROOT_LOGIN_ENABLED</code></li>
+                <li><code>GEOSERVER_NODE_OPTS</code> (Git Branch)</li>
+              </ul>
+            </li>
+            <li>Data-Dir-Catalog-Loader → Core</li>
+          </ul>
+        </section>
+
+        <!-- MIGRATION: CHECKLISTE -->
+        <section>
+          <h2>Migrations-Checkliste</h2>
+          <ol>
+            <li>☐ Java 17+ installieren</li>
+            <li>☐ Servlet-Container aktualisieren (Tomcat 10+)</li>
+            <li>☐ Eigene Extensions auf <code>jakarta.*</code> portieren</li>
+            <li>☐ Spring 7 API-Kompatibilität prüfen</li>
+            <li>☐ OAuth2-Konfiguration auf OIDC umstellen</li>
+            <li>☐ Data Directory sichern &amp; testen</li>
+            <li>☐ Raster-Workflows mit ImageN validieren</li>
+            <li>☐ Tiling &amp; Caching-Szenarien testen</li>
+            <li>☐ High-Volume-Tests durchführen</li>
+          </ol>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SONSTIGES NEU -->
+        <!-- ============================================ -->
+        <section>
           <section>
-            <h2>Migration: Konfiguration</h2>
+            <h2>Nennenswerte Neuerungen</h2>
             <ul>
-              <li class="fragment"><strong>Data Directory:</strong> Struktur bleibt kompatibel ✓</li>
-              <li class="fragment"><code>security/masterpw.info</code> wird nicht mehr generiert</li>
-              <li class="fragment">Umgebungsvariablen weiterhin unterstützt</li>
-              <li class="fragment">Neue Application Properties:
+              <li><strong>CITE-Zertifizierung wiederhergestellt</strong>
                 <ul>
-                  <li><code>ROOT_LOGIN_ENABLED</code></li>
-                  <li><code>GEOSERVER_NODE_OPTS</code> (Git Branch)</li>
+                  <li>Erstmals seit ~10 Jahren wieder zertifiziert</li>
+                  <li>WFS 2.0, WMS 1.3, WCS 2.0, WMTS 1.0, OGC API Features/Tiles</li>
                 </ul>
               </li>
-              <li class="fragment">Data-Dir-Catalog-Loader → Core</li>
+              <li><strong>Dokumentation auf Markdown</strong> migriert
+                <ul><li>PDF-Generierung entfernt, modernerer Workflow</li></ul>
+              </li>
+              <li><strong>CORS-Support</strong> nativ konfigurierbar</li>
+              <li><strong>Docker Multi-Arch</strong> (AMD64 + ARM64)</li>
+              <li><strong>Security-Härtung:</strong> CSP-Headers, HTML-Escaping (GetFeatureInfo), XXE-Schutz</li>
             </ul>
           </section>
 
-          <!-- MIGRATION: CHECKLISTE -->
           <section>
-            <h2>Migrations-Checkliste</h2>
-            <ol>
-              <li>☐ Java 17+ installieren</li>
-              <li>☐ Servlet-Container aktualisieren (Tomcat 10+)</li>
-              <li>☐ Eigene Extensions auf jakarta.* portieren</li>
-              <li>☐ Spring 6 API-Kompatibilität prüfen</li>
-              <li>☐ OAuth2-Konfiguration auf OIDC umstellen</li>
-              <li>☐ Data Directory sichern &amp; testen</li>
-              <li>☐ Raster-Workflows mit ImageN validieren</li>
-              <li>☐ Tiling &amp; Caching-Szenarien testen</li>
-              <li>☐ High-Volume-Tests durchführen</li>
-            </ol>
+            <h2>Funktionale Änderungen (1/2)</h2>
+            <ul>
+              <li><strong>OGC API</strong> – Maps, Tiles (CITE), Processes, 3D GeoVolumes (Comm.)</li>
+              <li><strong>WFS:</strong> 8KB POST-Limit behoben, Features Templating Schema Override</li>
+              <li><strong>WMS:</strong> GetLegendGraphic mit Transformations-Funktionen</li>
+              <li><strong>WPS:</strong> SpatioTemporalZonalStatistics, Jiffle Expressions, NetCDF-Output</li>
+              <li><strong>Vector Tiles:</strong> Metatiling-Support, verbessertes Clipping &amp; Rendering</li>
+              https://github.com/geoserver/geoserver/pull/9052
+
+              <li><strong>REST API:</strong> Security-Provider, Filter-Chains &amp; Auth-Filter CRUD</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Funktionale Änderungen (2/2)</h2>
+            <ul>
+              <li><strong>Neue Datenquellen:</strong>
+                <ul>
+                  <li>GeoParquet, PMTiles, SingleStore/MemSQL (Community)</li>
+                  <li>COG-Verbesserungen, Vector Mosaic Datastore</li>
+                </ul>
+              </li>
+              <li><strong>Neue Ausgabeformate:</strong> Excel (WPS), NetCDF (WPS)</li>
+              <li><strong>Admin-UI:</strong> Audit-Trail (letzte Änderung + User), kompaktere Conformance-UI</li>
+              <li><strong>GeoWebCache:</strong> Google Cloud Storage Backend (Comm.), Tile-Matrix-Set-Links</li>
+              <li><strong>Konfiguration:</strong> CRS-Autoritäten, erweiterte Application Properties</li>
+              <li><strong>Sonstiges:</strong> KMZ mit eingebetteten Icons, CoverageView NoData-Fill, STAC/OpenSearch-Verbesserungen</li>
+            </ul>
           </section>
         </section>
 
