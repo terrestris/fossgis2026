@@ -118,6 +118,7 @@
             </li>
             <!-- <li>CISA-Pflicht: keine bekannten Schwachstellen</li> -->
             <li">→ Technische Schulden abbauen, Zukunftsfähigkeit sichern</li>
+            <li">→ Kein klassisches Feature-Release, ein Platformupgrade</li>
           </ul>
         </section>
 
@@ -217,8 +218,8 @@
 
         <section>
           <h2>Die Spring-Lawine</h2>
-          <img src="https://geoserver.org/img/posts/2.26/gs3-updates.svg" />
-          <p>Quelle: <a href="https://geoserver.org/behind%20the%20scenes/2025/01/13/roadmap.html" target="_blank">GeoServer Roadmap 2025</a></p>
+          <img src="./img/gs3-updates.svg" />
+          <p>Quelle: <a href="https://geoserver.org/sponsor/gs3-crowdfunding" target="_blank">GeoServer 3 Crowdfunding</a></p>
         </section>
 
         <section>
@@ -229,8 +230,8 @@
 
         <section>
           <h2>Der Plan</h2>
-          <img src="https://geoserver.org/img/posts/2.26/gs-milestones.svg" />
-          <p>Quelle: <a href="https://geoserver.org/behind%20the%20scenes/2025/01/13/roadmap.html" target="_blank">GeoServer Roadmap 2025</a></p>
+          <img src="./img/gs3-milestones.svg" />
+          <p>Quelle: <a href="https://geoserver.org/sponsor/gs3-crowdfunding" target="_blank">GeoServer 3 Crowdfunding</a></p>
         </section>
 
         <section>
@@ -287,52 +288,6 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
         </section>
 
         <!-- ============================================ -->
-        <!-- OGC API -->
-        <!-- ============================================ -->
-        <section>
-          <h2>OGC API Support</h2>
-          <ul>
-            <li>OGC API – Features (Kern)</li>
-            <li>OGC API – Tiles (CITE-getestet)</li>
-            <li>OGC API – Maps</li>
-            <li>OGC API – Processes (Basis)</li>
-          </ul>
-          <p class="fragment highlight-green">
-            ✓ CITE-Zertifizierung wiederhergestellt<br>
-            <small>(erstmals seit ~10 Jahren)</small>
-          </p>
-        </section>
-
-        <!-- ============================================ -->
-        <!-- NEUE FORMATE -->
-        <!-- ============================================ -->
-        <section>
-          <h2>Neue Formate &amp; Protokolle</h2>
-          <div class="two-columns">
-            <div>
-              <h4>Datenquellen</h4>
-              <ul>
-                <li><strong>GeoParquet</strong> (Community)</li>
-                <li><strong>PMTiles</strong> (Community)</li>
-                <li>COG-Verbesserungen</li>
-                <li>MBTiles-Updates</li> <!-- Rausnehmen ?! -->
-                <li>Vector Mosaic Datastore</li> <!-- Rausnehmen ?! -->
-              </ul>
-            </div>
-            <div>
-              <h4>Ausgabe &amp; Verarbeitung</h4>
-              <ul>
-                <li>NetCDF-Output (WPS)</li>
-                <li>Excel-Output (WPS)</li>
-                <li>MapML für Layergruppen</li>
-                <li>Vector-Tile-Rendering ↑</li>
-                <li>WFS POST: 8KB-Limit behoben</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- ============================================ -->
         <!-- WEB UI & SICHERHEIT -->
         <!-- ============================================ -->
         <section>
@@ -345,21 +300,6 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
             <li>Master-Passwort-Verwaltung vereinfacht</li>
             <li>Root-Login steuerbar per Application Properties</li>
           </ul>
-        </section>
-
-        <!-- ============================================ -->
-        <!-- DEPLOYMENT -->
-        <!-- ============================================ -->
-        <section>
-          <h2>Deployment</h2>
-          <ul>
-            <li>Weiterhin: Binary, WAR, Windows-Installer</li>
-            <li><strong>Docker Multi-Arch</strong> (AMD64 + ARM64)</li>
-            <li>~40% bessere Preis-Performance auf ARM64 (Graviton)</li>
-            <li>Tomcat 10+ / Jetty 10.x+ erforderlich</li>
-            <li>docker.osgeo.org – offizielle Images</li>
-          </ul>
-          <pre><code class="language-bash">docker pull docker.osgeo.org/geoserver:3.0.0</code></pre>
         </section>
 
         <!-- ============================================ -->
@@ -474,6 +414,76 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
           <p><em>Fragen?</em></p>
         </section>
 
+        <!-- ============================================ -->
+        <!-- OGC API -->
+        <!-- ============================================ -->
+        <section>
+          <h2>OGC API Support</h2>
+          <ul>
+            <li>OGC API – Features (Kern)</li>
+            <li>OGC API – Tiles (CITE-getestet)</li>
+            <li>OGC API – Maps</li>
+            <li>OGC API – Processes (Basis)</li>
+          </ul>
+          <p class="fragment highlight-green">
+            ✓ CITE-Zertifizierung wiederhergestellt<br>
+            <small>(erstmals seit ~10 Jahren)</small>
+          </p>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- NEUE FORMATE -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Neue Formate &amp; Protokolle</h2>
+          <div class="two-columns">
+            <div>
+              <h4>Datenquellen</h4>
+              <ul>
+                <li><strong>GeoParquet</strong> (Community)</li>
+                <li><strong>PMTiles</strong> (Community)</li>
+                <li>COG-Verbesserungen</li>
+                <li>MBTiles-Updates</li> <!-- Rausnehmen ?! -->
+                <li>Vector Mosaic Datastore</li> <!-- Rausnehmen ?! -->
+              </ul>
+            </div>
+            <div>
+              <h4>Ausgabe &amp; Verarbeitung</h4>
+              <ul>
+                <li>NetCDF-Output (WPS)</li>
+                <li>Excel-Output (WPS)</li>
+                <li>MapML für Layergruppen</li>
+                <li>Vector-Tile-Rendering ↑</li>
+                <li>WFS POST: 8KB-Limit behoben</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+                <!-- ============================================ -->
+        <!-- DEPLOYMENT -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Deployment</h2>
+          <ul>
+            <li>Weiterhin: Binary, WAR, Windows-Installer</li>
+            <li><strong>Docker Multi-Arch</strong> (AMD64 + ARM64)</li>
+            <li>~40% bessere Preis-Performance auf ARM64 (Graviton)</li>
+            <li>Tomcat 10+ / Jetty 10.x+ erforderlich</li>
+            <li>docker.osgeo.org – offizielle Images</li>
+          </ul>
+          <pre><code class="language-bash">docker pull docker.osgeo.org/geoserver:3.0.0</code></pre>
+        </section>
+
+                <!-- ============================================ -->
+        <!-- SONSTIGES -->
+        <!-- ============================================ -->
+        <section>
+          <h2>Sonstiges</h2>
+          <ul>
+            <li>CORS</li>
+            <li>Doku Markdown</li>
+        </section>
       </div>
     </div>
 
