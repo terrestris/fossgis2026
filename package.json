@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "description": "Materials for the FOSSGIS 2026",
   "scripts": {
-    "start": "vite dev",
-    "build": "vite build"
+    "start": "node scripts/dev-start.js",
+    "build": "node scripts/build-html.js && vite build",
+    "dev:vite": "vite dev"
   },
   "author": "terrestris GmbH & Co. KG",
   "license": "cc-by-sa-4.0",
