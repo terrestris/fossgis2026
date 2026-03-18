@@ -5,6 +5,9 @@
   --animation-duration: 0.3s;
   --title-color: #333;
   --title-outline: rgba(255,255,255,0.5);
+  --title-outline-over: rgba(255, 255, 255, 0.90);
+  --title-outline-blur-radius: 0.09em;
+  --title-outline-blur-radius-over: 0.12em;
 }
 
 @font-face {
@@ -85,7 +88,8 @@ li:hover {
 }
 
 .authors {
-  color: rgb(249, 184, 32);
+  color: var(--blue);
+  font-weight: bold;
 }
 
 .authors a {
@@ -95,12 +99,13 @@ li:hover {
 
 a.title {
   text-align: right;
-  transition: backdrop-filter var(--animation-duration);
+  transition: backdrop-filter var(--animation-duration), transform var(--animation-duration), letter-spacing var(--animation-duration), text-shadow var(--animation-duration);
   justify-self: flex-start;
   flex: 2;
   backdrop-filter: blur(3px);
   margin: 0;
   letter-spacing: 0.15rem;
+
 }
 
 a.title,
@@ -111,20 +116,31 @@ a.title:active {
   color: var(--title-color);
   font-weight: bold;
   text-shadow:
-      0.05em 0 var(--title-outline),
-      0 0.05em var(--title-outline),
-      -0.05em 0 var(--title-outline),
-      0 -0.05em var(--title-outline),
-      -0.05em -0.05em var(--title-outline),
-      -0.05em 0.05em var(--title-outline),
-      0.05em -0.05em var(--title-outline),
-      0.05em 0.05em var(--title-outline);
+      0.05em 0 var(--title-outline-blur-radius) var(--title-outline),
+      0 0.05em var(--title-outline-blur-radius) var(--title-outline),
+      -0.05em 0 var(--title-outline-blur-radius) var(--title-outline),
+      0 -0.05em var(--title-outline-blur-radius) var(--title-outline),
+      -0.05em -0.05em var(--title-outline-blur-radius) var(--title-outline),
+      -0.05em 0.05em var(--title-outline-blur-radius) var(--title-outline),
+      0.05em -0.05em var(--title-outline-blur-radius) var(--title-outline),
+      0.05em 0.05em var(--title-outline-blur-radius) var(--title-outline);
   padding: 1em;
   border-radius: 1.5em 1.5em 0 0;
 }
 
+
 li:hover .title {
   backdrop-filter: none;
+  transform: scale(1.05);
+  text-shadow:
+      0.05em 0 var(--title-outline-blur-radius-over) var(--title-outline-over),
+      0 0.05em var(--title-outline-blur-radius-over) var(--title-outline-over),
+      -0.05em 0 var(--title-outline-blur-radius-over) var(--title-outline-over),
+      0 -0.05em var(--title-outline-blur-radius-over) var(--title-outline-over),
+      -0.05em -0.05em var(--title-outline-blur-radius-over) var(--title-outline-over),
+      -0.05em 0.05em var(--title-outline-blur-radius-over) var(--title-outline-over),
+      0.05em -0.05em var(--title-outline-blur-radius-over) var(--title-outline-over),
+      0.05em 0.05em var(--title-outline-blur-radius-over) var(--title-outline-over);
 }
 
 .authors,
