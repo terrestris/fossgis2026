@@ -1,0 +1,16 @@
+{
+  "name": "fossgis2026",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Materials for the FOSSGIS 2026",
+  "scripts": {
+    "start": "vite dev",
+    "build": "vite build"
+  },
+  "author": "terrestris GmbH & Co. KG",
+  "license": "cc-by-sa-4.0",
+  "dependencies": { },
+  "devDependencies": {
+    "vite": "^6.2.2"
+  }
+}
