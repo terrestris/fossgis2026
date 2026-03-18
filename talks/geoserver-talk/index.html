@@ -487,33 +487,23 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
         </section>
 
         <section>
-          <h2>Funktionale Änderungen (1/2)</h2>
+          <h2>Neue Community-Plugins</h2>
           <ul>
-            <li><strong>OGC API</strong> – Maps, Tiles (CITE), Processes, 3D GeoVolumes (Comm.)</li>
-            <li><strong>WFS:</strong> 8KB POST-Limit behoben, Features Templating Schema Override</li>
-            <li><strong>WMS:</strong> GetLegendGraphic mit Transformations-Funktionen</li>
-            <li><strong>WPS:</strong> SpatioTemporalZonalStatistics, Jiffle Expressions, NetCDF-Output</li>
-            <li><strong>Vector Tiles:</strong> Metatiling-Support, verbessertes Clipping &amp; Rendering</li>
-            https://github.com/geoserver/geoserver/pull/9052
-
-            <li><strong>REST API:</strong> Security-Provider, Filter-Chains &amp; Auth-Filter CRUD</li>
+            <li><strong>OGC API</strong> 3D GeoVolumes </li> <!-- https://github.com/geoserver/geoserver/pull/9038 --> (auch backport für 2.28.x)
+            <li>GeoParquet</li>
+            <li>PMTiles</li>
+            <li>SingleStore/MemSQL</li>
+            <li><strong>GeoWebCache:</strong> Google Cloud Storage Backend (Comm.)</li>
           </ul>
         </section>
 
         <section>
-          <h2>Funktionale Änderungen (2/2)</h2>
+          <h2>Unsortiert TODO</h2>
           <ul>
-            <li><strong>Neue Datenquellen:</strong>
-              <ul>
-                <li>GeoParquet, PMTiles, SingleStore/MemSQL (Community)</li>
-                <li>COG-Verbesserungen, Vector Mosaic Datastore</li>
-              </ul>
-            </li>
-            <li><strong>Neue Ausgabeformate:</strong> Excel (WPS), NetCDF (WPS)</li>
-            <li><strong>Admin-UI:</strong> Audit-Trail (letzte Änderung + User), kompaktere Conformance-UI</li>
-            <li><strong>GeoWebCache:</strong> Google Cloud Storage Backend (Comm.), Tile-Matrix-Set-Links</li>
-            <li><strong>Konfiguration:</strong> CRS-Autoritäten, erweiterte Application Properties</li>
-            <li><strong>Sonstiges:</strong> KMZ mit eingebetteten Icons, CoverageView NoData-Fill, STAC/OpenSearch-Verbesserungen</li>
+            <li><strong>Neue WPS-Ausgabeformate:</strong> Excel (WPS), NetCDF (WPS)</li>
+            <li><strong>Vector Tiles:</strong> Metatiling-Support, verbessertes Clipping &amp; Rendering</li>
+            https://github.com/geoserver/geoserver/pull/9052
+            <li><strong>REST API:</strong> Security-Provider, Filter-Chains &amp; Auth-Filter CRUD</li>
           </ul>
         </section>
 
