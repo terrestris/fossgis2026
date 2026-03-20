@@ -23,16 +23,25 @@
 </head>
 
 <body>
-  <h1>Team <a href="https://www.terrestris.de/">terrestris</a> auf der <a
-      href="https://fossgis-konferenz.de/{{CONFERENCE_YEAR}}/">{{CONFERENCE_NAME}} {{CONFERENCE_YEAR}} in {{CONFERENCE_LOCATION}}</a></h1>
-  <h2>Vorträge</h2>
-  <ul>
-{{TALKS_HTML}}
-  </ul>
-  <h2>Workshops</h2>
-  <ul>
-{{WORKSHOPS_HTML}}
-  </ul>
+  <main>
+  <header>
+    <h1>Team <a href="https://www.terrestris.de/">terrestris</a> auf der <a
+        href="https://fossgis-konferenz.de/{{CONFERENCE_YEAR}}/">{{CONFERENCE_NAME}} {{CONFERENCE_YEAR}} in {{CONFERENCE_LOCATION}}</a></h1>
+  </header>
+
+  <section>
+    <h2>Vorträge</h2>
+    <ul>
+  {{TALKS_HTML}}
+    </ul>
+  </section>
+  <section>
+    <h2>Workshops</h2>
+    <ul>
+  {{WORKSHOPS_HTML}}
+    </ul>
+  </section>
+
   <h2>Andere Ressourcen</h2>
   <p>
     Unsere Freunde von mundialis tragen ebenso bei: <a
@@ -59,6 +68,6 @@
     <a href="{{BACKGROUND_SOURCE}}">
       {{BACKGROUND_SOURCE_LABEL}}</a>
   </p>
+</main>
 </body>
-
 </html>
