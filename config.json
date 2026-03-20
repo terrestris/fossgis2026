@@ -1,0 +1,100 @@
+{
+  "conference": {
+    "year": 2026,
+    "location": "Göttingen",
+    "name": "FOSSGIS"
+  },
+  "backgroundImage": {
+    "url": "/img/goettingen.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Auditorium_G%C3%B6ttingen.jpg",
+    "sourceLabel": "wikimedia"
+  },
+  "videoLink": {
+    "enabled": true
+  },
+  "ogImage": "https://terrestris.github.io/fossgis2026/img/terrestris.svg",
+  "talks": [
+    {
+      "title": "basemap.de 2026 Neues von der AG SmartMapping",
+      "link": "https://pretalx.com/fossgis2026/talk/HGDLS8/",
+      "authors": "Arnulf Bichler",
+      "date": "25. März 2026",
+      "time": "15:25-15:45",
+      "location": "HS1 (ZHG 011)"
+    },
+    {
+      "title": "Metadateneditor Berlin — Effizient erfassen, prüfen und veröffentlichen",
+      "link": "https://pretalx.com/fossgis2026/talk/NHU8SV/",
+      "authors": "Barbara Wagner",
+      "date": "25. März 2026",
+      "time": "15:25-15:45",
+      "location": "HS2 (ZHG 010)"
+    },
+    {
+      "title": "Open Source und Geo in 2026",
+      "link": "https://pretalx.com/fossgis2026/talk/VJAJHH/",
+      "authors": "Arnulf Bichler",
+      "date": "25. März 2026",
+      "time": "18:15-18:35",
+      "location": "HS1 (ZHG 011)"
+    },
+    {
+      "title": "Management von Kartenstilen mit OGC API - Styles",
+      "link": "https://pretalx.com/fossgis2026/talk/KNMQ7P/",
+      "authors": "Jan Suleiman",
+      "date": "26. März 2026",
+      "time": "17:20-17:40",
+      "location": "HS2 (ZHG 010)"
+    },
+    {
+      "title": "Apache Superset und OGC WFS — Offene Standards für Business Intelligence",
+      "link": "https://pretalx.com/fossgis2026/talk/NLJY89/",
+      "authors": "Jan Suleiman & Charlie Liebscher (Stadt Leipzig)",
+      "date": "26. März 2026",
+      "time": "17:55-18:15",
+      "location": "HS2 (ZHG 010)"
+    },
+    {
+      "title": "GeoServer 3 – Der große technische Umbau",
+      "link": "https://pretalx.com/fossgis2026/talk/3GUZTJ/",
+      "authors": "Daniel Koch & Nils Bühner",
+      "date": "27. März 2026",
+      "time": "11:10-11:30",
+      "location": "HS1 (ZHG 011)"
+    },
+    {
+      "title": "Masterportal GeoEditor Addon",
+      "link": "https://pretalx.com/fossgis2026/talk/KLKJWJ/",
+      "authors": "Arnulf Bichler",
+      "date": "27. März 2026",
+      "time": "14:55-15:15",
+      "location": "HS2 (ZHG 010)"
+    }
+  ],
+  "workshops": [
+    {
+      "title": "Einführung GeoServer",
+      "link": "https://pretalx.com/fossgis2026/talk/P9RQ8K/",
+      "authors": "Daniel Koch & Nils Bühner",
+      "date": "25. März 2026",
+      "time": "14:15-15:45",
+      "location": "WS1 (VG 1.104)"
+    },
+    {
+      "title": "Hands on Masterportal: Erweiterte Konfiguration",
+      "link": "https://pretalx.com/fossgis2026/talk/LF7E3B/",
+      "authors": "Jan Suleiman",
+      "date": "26. März 2026",
+      "time": "11:10-12:40",
+      "location": "WS1 (VG 1.104)"
+    },
+    {
+      "title": "Erstellen von BI-Dashboards mit Apache Superset",
+      "link": "https://pretalx.com/fossgis2026/talk/7RZ37K/",
+      "authors": "Jan Suleiman & Daniel Koch",
+      "date": "26. März 2026",
+      "time": "14:15-15:45",
+      "location": "WS3 (VG 1.102)"
+    }
+  ]
+}
