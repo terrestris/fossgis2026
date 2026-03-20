@@ -80,7 +80,7 @@ function buildHtml() {
   writeHtml(html);
 }
 
-console.log('📝 Generating index.html...');
+console.log('📝 Generating index.html…');
 try {
   buildHtml();
   console.log('✓ index.html generated\n');
@@ -94,14 +94,14 @@ const watch = process.argv.includes('--watch');
 
 if (watch) {
   // Sentinel line: dev-start.js detects the substring "Watching" to know the initial build succeeded
-  console.log('👀 Watching config.json and index.tpl.html for changes...\n');
+  console.log('👀 Watching config.json and index.tpl.html for changes…\n');
   let timeout;
   let configWatcher, templateWatcher;
 
   const triggerRebuild = (fileName) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-      console.log(`\n📝 ${fileName} changed, regenerating index.html...`);
+      console.log(`\n📝 ${fileName} changed, regenerating index.html…`);
       try {
         buildHtml();
         console.log('✓ index.html regenerated\n');

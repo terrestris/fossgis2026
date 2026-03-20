@@ -40,7 +40,7 @@ const killViteProcess = (viteProc, signal = 'SIGTERM') => {
 };
 
 // Start HTML builder with watch mode
-console.log('🚀 Starting dev environment...\n');
+console.log('🚀 Starting dev environment…\n');
 const buildProcess = spawn('node', [join(__dirname, 'build-html.js'), '--watch'], {
   stdio: ['inherit', 'pipe', 'pipe']
 });
@@ -144,7 +144,7 @@ buildProcess.stderr.on('data', (data) => {
 
 // Handle process termination
 const terminate = () => {
-  console.log('\n📴 Shutting down...');
+  console.log('\n📴 Shutting down…');
   clearTimeout(viteStartTimeout);
   lineReader.close();
   buildProcess.kill();
