@@ -1,18 +1,88 @@
-/* GeoServer 3 Talk — custom styles */
+:root {
+  --gs-blue:        #0092C8;
+  --gs-blue-light:  #00AFDD;
+  --gs-blue-dark:   #006e96;
+  --gs-orange:      #ec8106;
+  --gs-row-tint:    #d6eef8;
+  --gs-border-tint: #dde8f0;
+}
+
+.reveal .slides > section {
+  border-top: 5px solid var(--gs-blue);
+  box-sizing: border-box;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.gs-footer {
+  position: fixed;
+  bottom: 0.7em;
+  left: 1em;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.gs-footer img {
+  height: 1.6em;
+  opacity: 0.65;
+}
+
+.reveal .slides .gs-title {
+  background: linear-gradient(140deg, var(--gs-blue-dark) 0%, var(--gs-blue) 55%, var(--gs-blue-light) 100%);
+  color: #fff;
+  border-top: none;
+  border-radius: 4px;
+}
+
+.reveal .slides section.gs-title h1 {
+  color: #fff;
+  font-size: 2.4em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  margin-bottom: 0.2em;
+}
+
+.reveal .slides section.gs-title h3 {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1em;
+  font-weight: 400;
+}
+
+.reveal .slides section.gs-title .gs-title-logo {
+  margin-bottom: 1.2em;
+}
+
+.reveal .slides section.gs-title .gs-title-logo img {
+  height: 3em;
+  opacity: 0.95;
+}
 
 .reveal .subtitle {
   font-size: 1.2em;
-  color: #666;
+  color: rgba(255, 255, 255, 0.75);
   margin-top: 0.5em;
 }
 
 .reveal .author {
   font-size: 0.9em;
-  color: #888;
+  color: rgba(255, 255, 255, 0.8);
   margin-top: 1em;
 }
 
-/* Two-column layout */
+.reveal h2 {
+  color: var(--gs-blue);
+}
+
+.reveal h3 {
+  color: var(--gs-blue-light);
+}
+
+.reveal h4 {
+  color: var(--gs-blue-dark);
+  margin-bottom: 0.3em;
+}
+
 .reveal .two-columns {
   display: flex;
   gap: 2em;
@@ -23,70 +93,61 @@
   flex: 1;
 }
 
-/* Comparison table */
-.reveal .comparison-table {
-  font-size: 0.6em;
-  width: 100%;
-}
-
-.reveal .comparison-table th {
-  background: #2d6ca2;
-  color: white;
-  padding: 0.4em 0.6em;
-}
-
-.reveal .comparison-table td {
-  padding: 0.3em 0.6em;
-  border-bottom: 1px solid #ddd;
-}
-
-.reveal .comparison-table td strong {
-  color: #ec8106;
-}
-
-.reveal .small-table {
-  font-size: 0.65em;
-}
-
-/* Highlight row in tables */
-.reveal .highlight-row td {
-  background: #e8f5e9;
-  font-weight: bold;
-}
-
-/* General table styling */
 .reveal table {
   margin: 0 auto;
   font-size: 0.7em;
 }
 
 .reveal table th {
-  background: #2d6ca2;
+  background: var(--gs-blue);
   color: white;
   padding: 0.4em 0.6em;
 }
 
 .reveal table td {
   padding: 0.3em 0.6em;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--gs-border-tint);
 }
 
-/* Code blocks */
+.reveal .comparison-table {
+  font-size: 0.6em;
+  width: 100%;
+}
+
+.reveal .comparison-table th {
+  background: var(--gs-blue);
+  color: white;
+  padding: 0.4em 0.6em;
+}
+
+.reveal .comparison-table td {
+  padding: 0.3em 0.6em;
+  border-bottom: 1px solid var(--gs-border-tint);
+}
+
+.reveal .comparison-table td strong {
+  color: var(--gs-orange);
+}
+
+.reveal .small-table {
+  font-size: 0.65em;
+}
+
+.reveal .highlight-row td {
+  background: var(--gs-row-tint);
+  font-weight: bold;
+}
+
 .reveal pre {
   font-size: 0.55em;
   width: 100%;
+  border-left: 4px solid var(--gs-blue);
 }
 
 .reveal pre code {
   max-height: 450px;
 }
 
-/* Fragment highlight green */
-.reveal .fragment.highlight-green.visible {
-  color: #2e7d32;
-}
-
-/* Lists */
 .reveal ul,
 .reveal ol {
   font-size: 0.85em;
@@ -96,18 +157,20 @@
   font-size: 0.9em;
 }
 
-/* Section headings */
-.reveal h2 {
-  color: #2d6ca2;
+.reveal .fragment.highlight-green.visible {
+  color: #2e7d32;
 }
 
-.reveal h3 {
-  color: #3a8fd4;
+.gs-footer.hidden {
+  visibility: hidden;
 }
 
-.reveal h4 {
-  color: #555;
-  margin-bottom: 0.3em;
+.reveal a {
+  color: var(--gs-blue);
+}
+
+.reveal a:hover {
+  color: var(--gs-blue-light);
 }
 
 .reveal section a.github,

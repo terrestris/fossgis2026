@@ -17,17 +17,25 @@
 
   <body>
     <div class="reveal">
+      <!-- Persistent footer logo (hidden on title slide via CSS) -->
+      <div class="gs-footer">
+        <img src="./img/GeoServer_Logo.svg" alt="GeoServer" />
+      </div>
+
       <div class="slides">
 
         <!-- ============================================ -->
         <!-- TITLE -->
         <!-- ============================================ -->
-        <section>
+        <section class="gs-title">
+          <div class="gs-title-logo">
+            <img src="./img/GeoServer_Logo_white.svg" alt="GeoServer Logo" />
+          </div>
           <h1>GeoServer 3</h1>
           <h3>Der große technische Umbau</h3>
           <p class="subtitle">FOSSGIS 2026</p>
           <p class="author">
-            Nils Bühner & Daniel Koch
+            Nils Bühner &amp; Daniel Koch
           </p>
         </section>
 
@@ -42,17 +50,8 @@
             <li>Der Weg zu GeoServer 3</li>
             <li>Was ist (wirklich) neu?</li>
             <li>Migration von 2.x → 3.x</li>
-            <!--
-            - CITE-Zertifizierung
-            - DOku in Markdown
-            - GeoParquet (Community)
-            - PMTiles
-            -->
-            <!-- <li>Fazit &amp; Ausblick</li> -->
+            <li>Fazit &amp; Ausblick</li>
           </ol>
-          <p>
-            <img src="./img/GeoServer_Logo.svg" alt="GeoServer Logo" width="25%">
-          </p>
         </section>
 
         <!-- ============================================ -->
@@ -561,10 +560,15 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
     <script>
       Reveal.initialize({
         hash: true,
-        slideNumber: true,
-        transition: 'slide',
         plugins: [RevealNotes, RevealHighlight]
       });
+
+      const footer = document.querySelector('.gs-footer');
+      function updateFooter(slide) {
+        footer.classList.toggle('hidden', slide.classList.contains('gs-title'));
+      }
+      Reveal.on('ready', e => updateFooter(e.currentSlide));
+      Reveal.on('slidechanged', e => updateFooter(e.currentSlide));
     </script>
   </body>
 </html>
