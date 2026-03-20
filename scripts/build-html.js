@@ -46,7 +46,7 @@ function validateConfig(config) {
     });
   };
 
-  validateItemsArray(config.talks,     'talks');
+  validateItemsArray(config.talks, 'talks');
   validateItemsArray(config.workshops, 'workshops');
 }
 
