@@ -6,24 +6,24 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const dirs = [
-  join(__dirname, 'talks')
-];
+const talksDir = join(__dirname, 'talks');
 
 const input = {
   main: resolve(__dirname, 'index.html')
 };
 
-dirs.forEach(dir => {readdirSync(dir, {encoding: 'utf8', withFileTypes: true})
-  .filter(file => file.name.endsWith('.html'))
-  .forEach((file) => {
-    input[file.name] = resolve(dir, file.name);
+readdirSync(talksDir, {encoding: 'utf8', withFileTypes: true})
+  .filter(file => file.isDirectory())
+  .forEach((subdir) => {
+    readdirSync(resolve(talksDir, subdir.name), {encoding: 'utf8', withFileTypes: true})
+      .filter(file => file.name.endsWith('.html'))
+      .forEach((file) => {
+        input[file.name] = resolve(talksDir, subdir.name, file.name);
+      });
   });
-});
 
 export default defineConfig({
   base: '',
-  // assetsInclude: ['**/*.svg'],
   build: {
     rollupOptions: {
       input
