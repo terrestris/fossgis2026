@@ -22,6 +22,13 @@
         <img src="./img/GeoServer_Logo.svg" alt="GeoServer" />
       </div>
 
+      <div class="gs-header-left">
+        <img src="./img/terrestris.svg" alt="terrestris" />
+      </div>
+      <div class="gs-header-right">
+        <img src="./img/fossgis.png" alt="FOSSGIS 2026" />
+      </div>
+
       <div class="slides">
 
         <!-- ============================================ -->
@@ -48,9 +55,10 @@
             <li>GeoServer im Überblick</li>
             <li>Warum GeoServer 3?</li>
             <li>Der Weg zu GeoServer 3</li>
-            <li>Was ist (wirklich) neu?</li>
+            <li>Was ist neu?</li>
             <li>Migration von 2.x → 3.x</li>
-            <li>Fazit &amp; Ausblick</li>
+            <li>Was ist wirklich neu?</li>
+            <li>Fazit</li>
           </ol>
         </section>
 
@@ -58,7 +66,7 @@
         <!-- WAS IST GEOSERVER? -->
         <!-- ============================================ -->
         <section>
-          <h2>Was ist GeoServer?</h2>
+          <h2>GeoServer im Überblick</h2>
           <ul>
             <li>Open-Source-Server für Geodaten (Java)</li>
             <li>Referenzimplementierung für OGC-Standards</li>
@@ -72,31 +80,7 @@
         <!-- KERNFUNKTION -->
         <!-- ============================================ -->
         <section>
-          <h2>Kernfunktion</h2>
-          <div class="two-columns">
-            <div>
-              <h4>Datenquellen</h4>
-              <ul>
-                <li>PostGIS, Oracle, SQL Server</li>
-                <li>GeoTIFF, GeoPackage, Shapefile</li>
-                <li>Cloud Optimized GeoTIFF</li>
-                <li>WMS/WFS Cascading</li>
-              </ul>
-            </div>
-            <div>
-              <h4>Ausgabe</h4>
-              <ul>
-                <li>OGC-Dienste<br>(WMS, WFS, …)</li>
-                <li>GeoWebCache / Tile-Caching</li>
-                <li>SLD / CSS Styling</li>
-                <li>REST-API für Automatisierung</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2>GeoServer</h2>
+          <h2>GeoServer im Überblick</h2>
           <img src="./img/geoserver_architektur.png" alt="GeoServer Architektur" />
         </section>
 
@@ -108,14 +92,13 @@
           <ul>
             <li>Technische Modernisierung der Plattform
               <ul>
-                <li>Java 17/21 – Ende des Java 8/11 Support</li>
                 <li>LTS-Support für Spring 5 in 2025 bereits abgelaufen<br>→ Migration zu Spring 6/7 dringend nötig</li>
+                <li>Java 17/21 – Ende des Java 8/11 Support</li>
                 <li>Kompatibilität zu Tomcat 11/Jetty 12/Jakarta EE schaffen</li>
                 <li>Unterstützung für moderne Security-Integrationen</li>
                 <li>Ersatz der veralteten Java Advanced Imaging (JAI) Bibliothek</li>
               </ul>
             </li>
-            <li>Technische Schulden abbauen
             <li>Zukunftsfähigkeit sichern</li>
             <li>Kein klassisches Feature-Release, sondern Plattformupgrade</li>
           </ul>
@@ -185,8 +168,9 @@
           <h2>Der Weg zu GeoServer 3</h2>
           <ul>
             <li><a href="https://geoserver.org/behind%20the%20scenes/2025/11/05/gs3-update.html" target="_blank">Okt 2025: Community Code Sprint in Italien</a></li>
+          </ul>
           <p>
-            <img src="./img/gs_codesprint.png" alt="Community Code Sprint" />
+            <img src="./img/gs_codesprint.png" alt="Community Code Sprint" style="height: 10em;" />
           </p>
         </section>
 
@@ -218,13 +202,13 @@
         <section>
           <h2>Viel Arbeit...</h2>
           <img src="./img/gs_upgrades.png" />
-          <p>Quelle: <a href="https://talks.osgeo.org/media/foss4g-europe-2025/submissions/HF8U3F/resources/GeoServer_3_Status_Report_r7jgPIl.pdf" target="_blank">GeoServer 3 Status Report, FOSS4G-E 2025</a></p>
+          <p style="font-size: 0.5em;">Quelle: <a href="https://talks.osgeo.org/media/foss4g-europe-2025/submissions/HF8U3F/resources/GeoServer_3_Status_Report_r7jgPIl.pdf" target="_blank">GeoServer 3 Status Report, FOSS4G-E 2025</a></p>
         </section>
 
         <section>
           <h2>Der Plan</h2>
           <img src="./img/gs3-milestones.svg" />
-          <p>Quelle: <a href="https://geoserver.org/sponsor/gs3-crowdfunding" target="_blank">GeoServer 3 Crowdfunding</a></p>
+          <p style="font-size: 0.5em;">Quelle: <a href="https://geoserver.org/sponsor/gs3-crowdfunding" target="_blank">GeoServer 3 Crowdfunding</a></p>
         </section>
 
         <!-- ============================================ -->
@@ -247,7 +231,6 @@
                 <li>Spring Security 6 / 7</li>
               </ul>
             </li>
-            <li>Code-Refactoring, das auch bei eigenen Extensions nötig wäre</li>
             <li>Namespace-Wechsel: <code>javax.*</code> → <code>jakarta.*</code></li>
           </ul>
           <pre style="font-size: 0.4em;"><code class="language-java">// GeoServer 2.x
@@ -260,7 +243,7 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
         <section>
           <h2>Die Spring-Lawine</h2>
           <img src="./img/gs3-updates.svg" />
-          <p>Quelle: <a href="https://geoserver.org/sponsor/gs3-crowdfunding" target="_blank">GeoServer 3 Crowdfunding</a></p>
+          <p style="font-size: 0.5em;">Quelle: <a href="https://geoserver.org/sponsor/gs3-crowdfunding" target="_blank">GeoServer 3 Crowdfunding</a></p>
         </section>
 
         <section>
@@ -275,7 +258,7 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
               </ul>
             </div>
             <div style="flex: 1;">
-              <img src="https://blog.nashtechglobal.com/wp-content/uploads/2024/06/image-19.png" alt="Java 17" />
+              <img src="./img/image-19.png" alt="Java 17" />
             </div>
           </div>
         </section>
@@ -312,7 +295,6 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
             <div style="flex: 3;">
               <ul>
                 <li>Upgrade von Spring Security 5 auf 7</li>
-                <li>Strengere Validierung und neue Defaults</li>
                 <li>Führt zu Inkompatibilität der OAuth2 Security Extension des GeoServers</li>
                 <li>Erfordert komplette Überarbeitung der Erweiterung: OAuth2 → OIDC (OpenID Connect)
               </ul>
@@ -352,7 +334,7 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
               <tr><th>Bereich</th><th>Auswirkung</th></tr>
             </thead>
             <tbody>
-              <tr><td>Servlet-Container</td><td>- Infrastruktur-Update (Tomcat 10+ / Jetty 11+)<br>- Anpassungen in eigenem Plugin-Code (<code style="font-size: 0.8em;">javax -> jakarta)</code>)<br>- ggf. zu prüfen: sehr spezifische Server-Konfigurationen</td></tr>
+              <tr><td>Servlet-Container</td><td>- Infrastruktur-Update (Tomcat 10+ / Jetty 11+)<br>- Anpassungen in eigenem Plugin-Code (<code style="font-size: 0.8em;">javax -> jakarta</code>)<br>- ggf. zu prüfen: sehr spezifische Server-Konfigurationen</td></tr>
               <tr><td>Java 17+</td><td>- Infrastruktur-Update<br>- ggf. Anpassungen in eigenem Plugin-Code</td></tr>
               <tr><td>OAuth2 → OIDC</td><td>- Aktualisierung/Umstieg auf GeoServer OIDC Extension</td></tr>
               <tr><td>Spring 7</td><td>- Anpassungen nur bei eigenem Plugin-Code</td></tr>
@@ -363,7 +345,7 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
         </section>
 
         <!-- MIGRATION: CODE -->
-        <section>
+        <!-- <section>
           <h2>Migration 2.x → 3.x</h2>
           <h3>Code &amp; Extensions</h3>
           <ul>
@@ -373,23 +355,17 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
             <li>Community-Module: passende Source-Builds nötig</li>
             <li>GeoFence-Migration noch in Arbeit (Milestone 3)</li>
           </ul>
-        </section>
+        </section> -->
 
         <!-- MIGRATION: KONFIGURATION -->
         <section>
           <h2>Migration 2.x → 3.x</h2>
-          <h3>Konfiguration</h3>
+          <h3>Auswirkungen im Betrieb</h3>
           <ul>
             <li><strong>Data Directory:</strong> Struktur bleibt kompatibel</li>
-            <li><code>security/masterpw.info</code> wird nicht mehr generiert</li>
-            <li>Umgebungsvariablen weiterhin unterstützt</li>
-            <li>Neue Application Properties:
-              <ul>
-                <li><code>ROOT_LOGIN_ENABLED</code></li>
-                <li><code>GEOSERVER_NODE_OPTS</code> (Git Branch)</li>
-              </ul>
-            </li>
-            <li>Data-Dir-Catalog-Loader → Core</li>
+            <li><strong>Umgebungsvariablen:</strong> Bleiben kompatibel</li>
+            <li><strong>OGC-Dienste:</strong> Keine Änderungen</li>
+            <li><strong>REST:</strong> Neuer <code>/v1</code> Suffix</br> → Bleibt kompatibel durch automatische Weiterleitung</li>
           </ul>
         </section>
 
@@ -397,22 +373,21 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
         <section style="font-size: 0.8em;">
           <h2>Migrations-Checkliste</h2>
           <ul style="list-style: none;">
-            <li>☐ Java 17+ installieren</li>
-            <li>☐ Servlet-Container aktualisieren (Tomcat 10+)</li>
+            <li>☐ Java 17+ installieren*</li>
+            <li>☐ Servlet-Container aktualisieren (Tomcat 10+ / Jetty 11+)*</li>
             <li>☐ Data Directory sichern &amp; testen</li>
-            <li>☐ Tiling &amp; Caching-Szenarien testen</li>
-            <li>☐ High-Volume-Tests durchführen</li>
             <li><br>Falls genutzt:
               <ul style="list-style: none;">
-                <li>☐ Raster-Workflows auf Basis von ImageN validieren</li>
                 <li>☐ OAuth2-Konfiguration auf OIDC umstellen</li>
               </ul>
             <li><br>In Code eigenen Extensions:
               <ul style="list-style: none;">
-                <li>☐ OpenRewrite für <code>javax.*</code> → <code>jakarta.*</code></li>
+                <li>☐ OpenRewrite für <code>javax</code> → <code>jakarta</code></li>
                 <li>☐ Spring 7 API-Änderungen ggf. manuell nacharbeiten</li>
               </ul>
             </li>
+            </br>
+            <li>*) Entfällt bei Nutzung des Docker-Images</li>
           </ul>
         </section>
 
@@ -423,34 +398,9 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
         <!-- https://geoserver.org/announcements/2025/07/16/cite-certification.html -->
         <!-- https://talks.osgeo.org/media/foss4g-europe-2025/submissions/YFFDVB/resources/Certified_GeoServer__status_of_OGC_servi_eM8OJlj.pdf -->
         <section>
-          <h2>CITE-Zertifizierung wiederhergestellt</h2>
-          <div class="two-columns">
-            <div style="flex: 2;">
-              <ul>
-                <li>Erstmals seit ~10 Jahren wieder zertifiziert</li>
-                <li>WFS 2.0, WMS 1.3, WCS 2.0, WMTS 1.0, OGC API Features/Tiles</li>
-              </ul>
-            </div>
-            <div style="flex: 1;">
-              <img src="./img/gs_cite.png" alt="GeoServer CITE-Zertifizierung" />
-            </div>
-          </div>
-        </section>
-
-        <!-- https://github.com/geoserver/docker/pull/263 -->
-        <section>
-          <h2>Multi-Architecture Docker Images</h2>
-          <div class="two-columns">
-            <div style="flex: 1;">
-              <ul>
-                <li>Support für AMD64 & ARM64 Umgebungen</li>
-                <li>Noch in der Umsetzung</li>
-              </ul>
-            </div>
-            <div style="flex: 2;">
-              <img src="./img/gs_multi_arch.png" alt="GeoServer Multi-Arch Support" />
-            </div>
-          </div>
+          <h3>
+            Was ist denn wirklich neu?
+          </h3>
         </section>
 
         <!-- https://github.com/geoserver/geoserver/pull/9046 -> neu in gs 3, kein backport bisher -->
@@ -461,8 +411,6 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
               <ul>
                 <li><strong>CORS-Support</strong> nativ konfigurierbar über Admin-UI</li>
                 <li>Ersetzt bisherige manuelle Filter-Konfiguration in der <code>web.xml</code></li>
-                <li>Security → CORS</li>
-                <li>Obacht: Kann mit Docker Image in Konflikt geraten -> Potentielles TODO für Migration Guide</li>
               </ul>
             </div>
             <div style="flex: 1;">
@@ -518,6 +466,37 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
           <img src="./img/gs_ui_layer_preview.png" class="r-stretch" alt="GeoServer UI" />
         </section>
 
+        <!-- https://github.com/geoserver/docker/pull/263 -->
+        <section>
+          <h2>Multi-Arch Docker Images</h2>
+          <div class="two-columns">
+            <div style="flex: 1;">
+              <ul>
+                <li>Support für AMD64 & ARM64 Umgebungen</li>
+                <li><em>Noch in der Umsetzung</em></li>
+              </ul>
+            </div>
+            <div style="flex: 2;">
+              <img src="./img/gs_multi_arch.png" alt="GeoServer Multi-Arch Support" />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>CITE-Zertifizierung wiederhergestellt</h2>
+          <div class="two-columns">
+            <div style="flex: 2;">
+              <ul>
+                <li>Erstmals seit ~10 Jahren wieder zertifiziert</li>
+                <li>WFS 2.0, WMS 1.3, WCS 2.0, WMTS 1.0, OGC API Features/Tiles</li>
+              </ul>
+            </div>
+            <div style="flex: 1;">
+              <img src="./img/gs_cite.png" alt="GeoServer CITE-Zertifizierung" />
+            </div>
+          </div>
+        </section>
+
         <!-- ============================================ -->
         <!-- FAZIT -->
         <!-- ============================================ -->
@@ -526,13 +505,13 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
           <ul>
             <li>GeoServer 3 = notwendige Modernisierung</li>
             <li>Solide technische Basis für die nächsten Jahre</li>
-            <li>Migration erfordert Vorsicht, aber:</li>
+            <li>Migration sollte unproblematisch sein</li>
             <ul>
               <li>Data Directory bleibt kompatibel</li>
               <li>OpenRewrite automatisiert bei eigenem Code großen Teil</li>
               <li>Community-Testing läuft auf Hochtouren</li>
             </ul>
-            <li>GeoServer 3 Release ist für den 15. April 2026 angekündigt</li>
+            <li>GeoServer 3 Release ist für den <strong>15. April 2026</strong> angekündigt</li>
           </ul>
         </section>
 
@@ -560,12 +539,18 @@ import jakarta.servlet.http.HttpServletRequest;</code></pre>
     <script>
       Reveal.initialize({
         hash: true,
+        // center: false,
         plugins: [RevealNotes, RevealHighlight]
       });
 
       const footer = document.querySelector('.gs-footer');
+      const headerLeft = document.querySelector('.gs-header-left');
+      const headerRight = document.querySelector('.gs-header-right');
       function updateFooter(slide) {
-        footer.classList.toggle('hidden', slide.classList.contains('gs-title'));
+        const isTitle = slide.classList.contains('gs-title');
+        footer.classList.toggle('hidden', isTitle);
+        headerLeft.classList.toggle('hidden', isTitle);
+        headerRight.classList.toggle('hidden', isTitle);
       }
       Reveal.on('ready', e => updateFooter(e.currentSlide));
       Reveal.on('slidechanged', e => updateFooter(e.currentSlide));

@@ -30,6 +30,34 @@
   margin: 0 0 0 0.2em;
 }
 
+.gs-header-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  height: 1.6em;
+  opacity: 0.65;
+}
+
+.gs-header-left img {
+  margin: 0.3em 0 0 0.2em;
+}
+
+.gs-header-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  pointer-events: none;
+  height: 2.5em;
+  opacity: 0.65;
+}
+
+.gs-header-right img {
+  margin: 0.1em 0.3em 0 0;
+}
+
 .reveal .slides .gs-title {
   background: linear-gradient(140deg, var(--gs-blue-dark) 0%, var(--gs-blue) 55%, var(--gs-blue-light) 100%);
   color: #fff;
@@ -162,7 +190,7 @@
   color: #2e7d32;
 }
 
-.gs-footer.hidden {
+.hidden {
   visibility: hidden;
 }
 
